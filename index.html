@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#141317" />
+
+  <title>Delle Model — Desktop content & model manager</title>
+  <meta name="description" content="Delle Model is a locally hosted desktop application to manage, organize and sync your models and their content — images, videos, tags and downloads from external sites." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dellemodel.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Delle Model — Desktop content & model manager" />
+  <meta property="og:description" content="Locally hosted desktop app to manage, organize and sync your models and their multimedia content." />
+  <meta property="og:url" content="https://dellemodel.app/" />
+  <meta property="og:image" content="https://dellemodel.app/og-image.png" />
+  <meta property="og:site_name" content="Delle Model" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Delle Model — Desktop content & model manager" />
+  <meta name="twitter:description" content="Organize, sync and browse your models and multimedia content from your desktop." />
+  <meta name="twitter:image" content="https://dellemodel.app/og-image.png" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --c-glass: #26282c;
+      --c-light: #fff;
+      --c-dark: #000;
+      --c-content: #F9FAFB;
+      --c-action: #0052f5;
+      --c-bg: #141317;
+      --glass-reflex-dark: 0.8;
+      --glass-reflex-light: 0.3;
+      --saturation: 120%;
+      --color-primary: #3B82F6;
+      --color-secondary: #1E40AF;
+      --color-accent: #8B5CF6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--c-bg);
+      color: var(--c-content);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── Liquid Glass System ── */
+    .liquid-glass {
+      background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+      backdrop-filter: blur(8px) saturate(var(--saturation));
+      -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 10%), transparent),
+        inset 1.8px 3px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 90%), transparent),
+        inset -2px -2px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 80%), transparent),
+        inset -0.3px -1px 4px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent),
+        0px 1px 5px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent),
+        0px 6px 16px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+      transform: translateZ(0);
+      will-change: transform, background-color;
+      transition:
+        background-color 400ms cubic-bezier(1, 0, 0.4, 1),
+        transform 200ms cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .liquid-glass:hover {
+      background-color: color-mix(in srgb, var(--c-glass) 18%, transparent);
+    }
+
+    .card-glass {
+      padding: 40px;
+      border-radius: 24px;
+      background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+      backdrop-filter: blur(8px) saturate(var(--saturation));
+      -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 10%), transparent),
+        inset 1.8px 3px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 90%), transparent),
+        inset -2px -2px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 80%), transparent),
+        inset -0.3px -1px 4px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent),
+        0px 1px 5px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent),
+        0px 6px 16px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+      transition: transform 300ms cubic-bezier(0.5, 0, 0, 1), background-color 400ms cubic-bezier(1, 0, 0.4, 1);
+    }
+
+    .card-glass:hover {
+      transform: translateY(-4px);
+      background-color: color-mix(in srgb, var(--c-glass) 18%, transparent);
+    }
+
+    .btn-glass {
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--c-content);
+      border-radius: 99em;
+      background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+      backdrop-filter: blur(8px) saturate(var(--saturation));
+      -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 10%), transparent),
+        inset 1.8px 3px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 90%), transparent),
+        inset -2px -2px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 80%), transparent),
+        inset -0.3px -1px 4px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent),
+        0px 1px 5px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent),
+        0px 6px 16px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+      transform: translateZ(0);
+      transition:
+        background-color 400ms cubic-bezier(1, 0, 0.4, 1),
+        transform 200ms cubic-bezier(0.5, 0, 0, 1);
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .btn-glass:hover {
+      transform: translateY(-2px);
+      background-color: color-mix(in srgb, var(--c-glass) 18%, transparent);
+    }
+
+    .btn-glass-primary {
+      background-color: color-mix(in srgb, var(--c-action) 15%, transparent);
+      color: var(--c-action);
+    }
+
+    .btn-glass-primary:hover {
+      background-color: color-mix(in srgb, var(--c-action) 22%, transparent);
+    }
+
+    .btn-glass-accent {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 20%, transparent), color-mix(in srgb, var(--color-accent) 20%, transparent));
+      color: #fff;
+    }
+
+    .btn-glass-accent:hover {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 30%, transparent), color-mix(in srgb, var(--color-accent) 30%, transparent));
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .navbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 56px;
+      border-radius: 99em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .navbar-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .navbar-links a {
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+
+    .navbar-links a:hover { opacity: 1; }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navbar-actions .btn-glass {
+      padding: 10px 22px;
+      font-size: 14px;
+    }
+
+    .navbar-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--c-content);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ── Mobile Menu ── */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: color-mix(in srgb, var(--c-dark) 50%, transparent);
+      backdrop-filter: blur(6px);
+      z-index: 98;
+    }
+
+    .mobile-overlay.open { display: block; }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 88px;
+      left: 16px;
+      right: 16px;
+      z-index: 99;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu-inner {
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .mobile-menu-inner a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: background-color 200ms;
+    }
+
+    .mobile-menu-inner a:hover {
+      background-color: color-mix(in srgb, var(--c-glass) 20%, transparent);
+    }
+
+    .mobile-menu-inner a i { width: 20px; text-align: center; }
+
+    @media (max-width: 768px) {
+      .navbar-links, .navbar-actions { display: none; }
+      .navbar-mobile-btn { display: block; }
+    }
+
+    /* ── Gradient Text ── */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Sections ── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .section-title {
+      font-size: 42px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      text-align: center;
+      opacity: 0.6;
+      max-width: 640px;
+      margin: 0 auto 60px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .hero-bg-glow-1 {
+      top: -200px;
+      right: -100px;
+      background: var(--color-primary);
+    }
+
+    .hero-bg-glow-2 {
+      bottom: -200px;
+      left: -100px;
+      background: var(--color-accent);
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 24px;
+    }
+
+    .hero-description {
+      font-size: 19px;
+      opacity: 0.65;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+
+    .hero-tag {
+      padding: 6px 16px;
+      border-radius: 99em;
+      font-size: 13px;
+      font-weight: 500;
+      background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+      color: var(--color-primary);
+      border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-visual {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      position: relative;
+    }
+
+    .hero-visual-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 8%, var(--c-bg)), color-mix(in srgb, var(--color-accent) 8%, var(--c-bg)));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-visual-placeholder i {
+      font-size: 64px;
+      opacity: 0.3;
+    }
+
+    .hero-visual-placeholder span {
+      font-size: 14px;
+      opacity: 0.3;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; gap: 40px; }
+      .hero-text h1 { font-size: 44px; }
+      .hero-visual { max-width: 560px; margin: 0 auto; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 { font-size: 34px; }
+    }
+
+    /* ── Features Grid ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 36px 28px;
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: #fff;
+      font-size: 22px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 15px;
+      opacity: 0.6;
+      line-height: 1.6;
+    }
+
+    /* ── How it Works ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      counter-reset: step;
+    }
+
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    .step-card {
+      padding: 32px 24px;
+      text-align: center;
+      counter-increment: step;
+      position: relative;
+    }
+
+    .step-number {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: 0.12;
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      opacity: 0.55;
+      line-height: 1.6;
+    }
+
+    /* ── Roadmap ── */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 700px) {
+      .roadmap-grid { grid-template-columns: 1fr; }
+    }
+
+    .roadmap-card {
+      padding: 36px;
+    }
+
+    .roadmap-card-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 99em;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .badge-soon {
+      background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+      color: var(--color-primary);
+    }
+
+    .badge-planned {
+      background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+      color: var(--color-accent);
+    }
+
+    .roadmap-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .roadmap-card ul {
+      list-style: none;
+    }
+
+    .roadmap-card ul li {
+      padding: 6px 0;
+      font-size: 15px;
+      opacity: 0.65;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .roadmap-card ul li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 100px 24px 120px;
+    }
+
+    .cta-card {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      border-radius: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 6%, transparent), color-mix(in srgb, var(--color-accent) 6%, transparent));
+      pointer-events: none;
+    }
+
+    .cta-card h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .cta-card p {
+      font-size: 18px;
+      opacity: 0.6;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .cta-card .btn-glass {
+      position: relative;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid color-mix(in srgb, var(--c-light) 6%, transparent);
+      padding: 40px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      opacity: 0.4;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      opacity: 0.4;
+      transition: opacity 200ms;
+    }
+
+    .footer-links a:hover { opacity: 0.8; }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 100ms; }
+    .delay-2 { transition-delay: 200ms; }
+    .delay-3 { transition-delay: 300ms; }
+    .delay-4 { transition-delay: 400ms; }
+    .delay-5 { transition-delay: 500ms; }
+    .delay-6 { transition-delay: 600ms; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <nav class="navbar-inner liquid-glass">
+      <a href="/" class="navbar-logo">
+        <div class="navbar-logo-icon">D</div>
+        <span>Delle</span>
+      </a>
+
+      <div class="navbar-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it Works</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+
+      <div class="navbar-actions">
+        <a href="#download" class="btn-glass btn-glass-primary">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+
+      <button class="navbar-mobile-btn" id="mobile-toggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner card-glass">
+      <a href="#features"><i class="fas fa-bolt"></i> Features</a>
+      <a href="#how-it-works"><i class="fas fa-list-ol"></i> How it Works</a>
+      <a href="#roadmap"><i class="fas fa-map"></i> Roadmap</a>
+      <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+      <a href="#download"><i class="fas fa-download"></i> Download</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-glow hero-bg-glow-1"></div>
+    <div class="hero-bg-glow hero-bg-glow-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-text fade-up">
+        <h1>
+          Manage your models<br />
+          <span class="gradient-text">from your desktop</span>
+        </h1>
+        <p class="hero-description">
+          Delle Model is a locally hosted desktop application that lets you
+          create, organize and sync your models and their content — images, videos,
+          tags and downloads — with ease.
+        </p>
+
+        <div class="hero-tags">
+          <span class="hero-tag">Collectors</span>
+          <span class="hero-tag">Content Creators</span>
+          <span class="hero-tag">Curators</span>
+          <span class="hero-tag">Organizers</span>
+          <span class="hero-tag">Archivists</span>
+          <span class="hero-tag">Photographers</span>
+          <span class="hero-tag">Videographers</span>
+          <span class="hero-tag">Models</span>
+          <span class="hero-tag">Media Managers</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#download" class="btn-glass btn-glass-accent">
+            <i class="fas fa-download"></i> Download for Free
+          </a>
+          <a href="#features" class="btn-glass">
+            Explore <i class="fas fa-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual liquid-glass fade-up delay-2">
+        <div class="hero-visual-placeholder">
+          <i class="fas fa-desktop"></i>
+          <span>App Preview</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section">
+    <h2 class="section-title fade-up">Everything you <span class="gradient-text">need</span></h2>
+    <p class="section-subtitle fade-up delay-1">Delle Model brings together model management, content syncing and downloading into a single application.</p>
+
+    <div class="features-grid">
+      <article class="card-glass feature-card fade-up delay-1">
+        <div class="feature-icon"><i class="fas fa-folder-open"></i></div>
+        <h3 class="feature-title">Folder Sync</h3>
+        <p class="feature-desc">Automatically sync each model's folder to keep your content always up to date.</p>
+      </article>
+
+      <article class="card-glass feature-card fade-up delay-2">
+        <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
+        <h3 class="feature-title">Full Customization</h3>
+        <p class="feature-desc">Profile pictures, descriptions, video thumbnails — customize every model in detail.</p>
+      </article>
+
+      <article class="card-glass feature-card fade-up delay-3">
+        <div class="feature-icon"><i class="fas fa-cloud-download-alt"></i></div>
+        <h3 class="feature-title">External Downloads</h3>
+        <p class="feature-desc">Download content from external sites directly into your local library.</p>
+      </article>
+
+      <article class="card-glass feature-card fade-up delay-4">
+        <div class="feature-icon"><i class="fas fa-tags"></i></div>
+        <h3 class="feature-title">Smart Tags & Sorting</h3>
+        <p class="feature-desc">Tag your content, filter and sort your images and videos instantly.</p>
+      </article>
+
+      <article class="card-glass feature-card fade-up delay-5">
+        <div class="feature-icon"><i class="fas fa-users"></i></div>
+        <h3 class="feature-title">Model Feats</h3>
+        <p class="feature-desc">Link multiple models to the same video and navigate between them easily.</p>
+      </article>
+
+      <article class="card-glass feature-card fade-up delay-6">
+        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+        <h3 class="feature-title">Favorites</h3>
+        <p class="feature-desc">Bookmark your favorite models, videos and images for quick access.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section id="how-it-works" class="section">
+    <h2 class="section-title fade-up">How it <span class="gradient-text">works</span></h2>
+    <p class="section-subtitle fade-up delay-1">Four steps to organize your entire collection.</p>
+
+    <div class="steps-grid">
+      <div class="card-glass step-card fade-up delay-1">
+        <div class="step-number gradient-text">01</div>
+        <h3 class="step-title">Install Delle Model</h3>
+        <p class="step-desc">Download and launch the app on your computer. Everything stays local.</p>
+      </div>
+
+      <div class="card-glass step-card fade-up delay-2">
+        <div class="step-number gradient-text">02</div>
+        <h3 class="step-title">Create Your Models</h3>
+        <p class="step-desc">Add models with a profile, description and cover photo.</p>
+      </div>
+
+      <div class="card-glass step-card fade-up delay-3">
+        <div class="step-number gradient-text">03</div>
+        <h3 class="step-title">Sync Your Content</h3>
+        <p class="step-desc">Import or download images and videos into each model's folder.</p>
+      </div>
+
+      <div class="card-glass step-card fade-up delay-4">
+        <div class="step-number gradient-text">04</div>
+        <h3 class="step-title">Explore & Sort</h3>
+        <p class="step-desc">Browse your collection with tags, favorites and advanced filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap" class="section">
+    <h2 class="section-title fade-up">What's <span class="gradient-text">coming next</span></h2>
+    <p class="section-subtitle fade-up delay-1">Delle Model is constantly evolving. Here's what's planned.</p>
+
+    <div class="roadmap-grid">
+      <div class="card-glass roadmap-card fade-up delay-1">
+        <span class="roadmap-card-badge badge-soon">Coming Soon</span>
+        <h3>Customizable Interface</h3>
+        <ul>
+          <li>Configurable sections on the model page</li>
+          <li>Navbar order and layout customization</li>
+          <li>Themes and visual preferences</li>
+        </ul>
+      </div>
+
+      <div class="card-glass roadmap-card fade-up delay-2">
+        <span class="roadmap-card-badge badge-planned">Planned</span>
+        <h3>Account Management</h3>
+        <ul>
+          <li>User administration interface</li>
+          <li>Roles and permissions</li>
+          <li>Usage history and statistics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Download -->
+  <section id="download" class="cta-section">
+    <div class="cta-card card-glass fade-up">
+      <h2>Ready to organize your <span class="gradient-text">collection</span>?</h2>
+      <p>Download Delle Model for free and start managing your models right now.</p>
+      <a href="#" class="btn-glass btn-glass-accent" style="font-size: 18px; padding: 18px 40px;">
+        <i class="fas fa-download"></i> Download for Windows
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-text">&copy; 2026 Delle Model. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('mobile-toggle');
+      const overlay = document.getElementById('mobile-overlay');
+      const menu = document.getElementById('mobile-menu');
+      const icon = toggle.querySelector('i');
+
+      function openMenu() {
+        overlay.classList.add('open');
+        menu.classList.add('open');
+        icon.className = 'fas fa-times';
+      }
+
+      function closeMenu() {
+        overlay.classList.remove('open');
+        menu.classList.remove('open');
+        icon.className = 'fas fa-bars';
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        menu.classList.contains('open') ? closeMenu() : openMenu();
+      });
+
+      overlay.addEventListener('click', closeMenu);
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.fade-up').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
