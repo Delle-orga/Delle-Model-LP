@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#141317" />
+
+  <title>FAQ — Delle Model | Frequently Asked Questions</title>
+  <meta name="description" content="Frequently asked questions about Delle Model: installation, features, syncing, downloads, compatibility and more." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dellemodel.app/faq" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FAQ — Delle Model" />
+  <meta property="og:description" content="Find answers to all your questions about Delle Model." />
+  <meta property="og:url" content="https://dellemodel.app/faq" />
+  <meta property="og:image" content="https://dellemodel.app/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FAQ — Delle Model" />
+  <meta name="twitter:description" content="Find answers to all your questions about Delle Model." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --c-glass: #26282c;
+      --c-light: #fff;
+      --c-dark: #000;
+      --c-content: #F9FAFB;
+      --c-action: #0052f5;
+      --c-bg: #141317;
+      --glass-reflex-dark: 0.8;
+      --glass-reflex-light: 0.3;
+      --saturation: 120%;
+      --color-primary: #3B82F6;
+      --color-secondary: #1E40AF;
+      --color-accent: #8B5CF6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--c-bg);
+      color: var(--c-content);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .liquid-glass {
+      background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+      backdrop-filter: blur(8px) saturate(var(--saturation));
+      -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 10%), transparent),
+        inset 1.8px 3px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 90%), transparent),
+        inset -2px -2px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 80%), transparent),
+        inset -0.3px -1px 4px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent),
+        0px 1px 5px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent),
+        0px 6px 16px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+      transform: translateZ(0);
+      will-change: transform, background-color;
+      transition:
+        background-color 400ms cubic-bezier(1, 0, 0.4, 1),
+        transform 200ms cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .liquid-glass:hover {
+      background-color: color-mix(in srgb, var(--c-glass) 18%, transparent);
+    }
+
+    .card-glass {
+      padding: 40px;
+      border-radius: 24px;
+      background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+      backdrop-filter: blur(8px) saturate(var(--saturation));
+      -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 10%), transparent),
+        inset 1.8px 3px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 90%), transparent),
+        inset -2px -2px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 80%), transparent),
+        inset -0.3px -1px 4px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent),
+        0px 1px 5px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent),
+        0px 6px 16px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    }
+
+    .btn-glass {
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--c-content);
+      border-radius: 99em;
+      background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+      backdrop-filter: blur(8px) saturate(var(--saturation));
+      -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 10%), transparent),
+        inset 1.8px 3px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 90%), transparent),
+        inset -2px -2px 0px -2px color-mix(in srgb, var(--c-light) calc(var(--glass-reflex-light) * 80%), transparent),
+        inset -0.3px -1px 4px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent),
+        0px 1px 5px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent),
+        0px 6px 16px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+      transform: translateZ(0);
+      transition:
+        background-color 400ms cubic-bezier(1, 0, 0.4, 1),
+        transform 200ms cubic-bezier(0.5, 0, 0, 1);
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .btn-glass:hover {
+      transform: translateY(-2px);
+      background-color: color-mix(in srgb, var(--c-glass) 18%, transparent);
+    }
+
+    .btn-glass-primary {
+      background-color: color-mix(in srgb, var(--c-action) 15%, transparent);
+      color: var(--c-action);
+    }
+
+    .btn-glass-primary:hover {
+      background-color: color-mix(in srgb, var(--c-action) 22%, transparent);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .navbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 56px;
+      border-radius: 99em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .navbar-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .navbar-links a {
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+
+    .navbar-links a:hover { opacity: 1; }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navbar-actions .btn-glass {
+      padding: 10px 22px;
+      font-size: 14px;
+    }
+
+    .navbar-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--c-content);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: color-mix(in srgb, var(--c-dark) 50%, transparent);
+      backdrop-filter: blur(6px);
+      z-index: 98;
+    }
+
+    .mobile-overlay.open { display: block; }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 88px;
+      left: 16px;
+      right: 16px;
+      z-index: 99;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu-inner {
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .mobile-menu-inner a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: background-color 200ms;
+    }
+
+    .mobile-menu-inner a:hover {
+      background-color: color-mix(in srgb, var(--c-glass) 20%, transparent);
+    }
+
+    .mobile-menu-inner a i { width: 20px; text-align: center; }
+
+    @media (max-width: 768px) {
+      .navbar-links, .navbar-actions { display: none; }
+      .navbar-mobile-btn { display: block; }
+    }
+
+    /* ── FAQ Page ── */
+    .faq-hero {
+      padding: 140px 24px 60px;
+      text-align: center;
+    }
+
+    .faq-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .faq-hero p {
+      font-size: 18px;
+      opacity: 0.6;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 24px 100px;
+    }
+
+    .faq-category {
+      margin-bottom: 48px;
+    }
+
+    .faq-category-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-left: 4px;
+    }
+
+    .faq-item {
+      border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--c-content);
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question i {
+      font-size: 14px;
+      transition: transform 300ms;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      opacity: 0.65;
+      line-height: 1.7;
+    }
+
+    .back-cta {
+      text-align: center;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid color-mix(in srgb, var(--c-light) 6%, transparent);
+      padding: 40px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      opacity: 0.4;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      opacity: 0.4;
+      transition: opacity 200ms;
+    }
+
+    .footer-links a:hover { opacity: 0.8; }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Delle Model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delle Model is a locally hosted desktop application that lets you manage, organize and sync your models and their multimedia content (images and videos). Everything stays on your computer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Delle Model free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Delle Model is completely free. You can download and use the application at no cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my data stay on my computer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Delle Model is hosted locally — no data is sent to an external server. All your content remains private on your machine."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which operating systems does Delle Model support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delle Model is currently available for Windows. macOS and Linux versions are planned in the roadmap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I download content from external sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delle Model includes a built-in download system that lets you fetch images and videos from compatible sites directly into the corresponding model's folder."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <nav class="navbar-inner liquid-glass">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-icon">D</div>
+        <span>Delle</span>
+      </a>
+
+      <div class="navbar-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how-it-works">How it Works</a>
+        <a href="index.html#roadmap">Roadmap</a>
+        <a href="faq.html" style="opacity:1">FAQ</a>
+      </div>
+
+      <div class="navbar-actions">
+        <a href="index.html#download" class="btn-glass btn-glass-primary">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+
+      <button class="navbar-mobile-btn" id="mobile-toggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner card-glass">
+      <a href="index.html#features"><i class="fas fa-bolt"></i> Features</a>
+      <a href="index.html#how-it-works"><i class="fas fa-list-ol"></i> How it Works</a>
+      <a href="index.html#roadmap"><i class="fas fa-map"></i> Roadmap</a>
+      <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+      <a href="index.html#download"><i class="fas fa-download"></i> Download</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="faq-hero fade-up">
+    <h1>Frequently Asked <span class="gradient-text">Questions</span></h1>
+    <p>Everything you need to know about Delle Model, from installation to advanced features.</p>
+  </section>
+
+  <!-- FAQ Content -->
+  <div class="faq-container">
+
+    <section class="faq-category fade-up">
+      <h2 class="faq-category-title"><i class="fas fa-info-circle" style="margin-right:8px;opacity:0.5"></i> General</h2>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          What is Delle Model?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Delle Model is a locally hosted desktop application that lets you manage, organize and sync your models and their multimedia content (images and videos). Everything stays on your computer, ensuring complete privacy.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          Is Delle Model free?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes, Delle Model is completely free. You can download and use the application at no cost and with no subscription.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          Does my data stay on my computer?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Absolutely. Delle Model is hosted locally — no data is sent to an external server. All your content remains private and secure on your machine.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          Which operating systems does Delle Model support?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Delle Model is currently available for Windows. macOS and Linux versions are planned in our roadmap and will be coming soon.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-category fade-up">
+      <h2 class="faq-category-title"><i class="fas fa-cogs" style="margin-right:8px;opacity:0.5"></i> Features</h2>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          How do I create a model?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            From the main interface, click the create button. You can set a name, description, profile picture and cover photo. A local folder will be automatically created to store the associated content.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          How does folder syncing work?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Each model is linked to a local folder. Delle Model monitors that folder and automatically syncs images and videos that are added, removed or modified. Your library always stays up to date.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          How do I download content from external sites?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Delle Model includes a built-in download system that lets you fetch images and videos from compatible sites directly into the corresponding model's folder. Simply paste the URL and start the download.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          What are "feats" on a video?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            "Feats" let you link multiple models to the same video. For example, if a video features two models, you can tag them both and find that video from either model's page.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          How do tags and sorting work?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            You can assign custom tags to each image or video. Then use the search filters to sort your content by tag, model, date or media type.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          Can I bookmark content as favorites?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes! You can add models, videos and images to your favorites. Your favorites are accessible from a dedicated section for quick access.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-category fade-up">
+      <h2 class="faq-category-title"><i class="fas fa-wrench" style="margin-right:8px;opacity:0.5"></i> Technical</h2>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          Does the app require an internet connection?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            No, Delle Model works entirely offline. An internet connection is only needed to download content from external sites.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          How are video thumbnails generated?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Delle Model automatically generates thumbnails for each imported video. You can also customize the thumbnail by choosing a specific frame or uploading your own image.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          What image and video formats are supported?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Delle Model supports common image formats (JPG, PNG, WebP, GIF) as well as standard video formats (MP4, MKV, AVI, WebM). Additional formats may be added based on demand.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="back-cta fade-up">
+      <a href="index.html#download" class="btn-glass btn-glass-primary" style="font-size:17px;padding:16px 36px">
+        <i class="fas fa-download"></i> Download Delle Model
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-text">&copy; 2026 Delle Model. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('mobile-toggle');
+      var overlay = document.getElementById('mobile-overlay');
+      var menu = document.getElementById('mobile-menu');
+      var icon = toggle.querySelector('i');
+
+      function closeMenu() {
+        overlay.classList.remove('open');
+        menu.classList.remove('open');
+        icon.className = 'fas fa-bars';
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (menu.classList.contains('open')) {
+          closeMenu();
+        } else {
+          overlay.classList.add('open');
+          menu.classList.add('open');
+          icon.className = 'fas fa-times';
+        }
+      });
+
+      overlay.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.faq-item');
+          var wasOpen = item.classList.contains('open');
+
+          document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+            openItem.classList.remove('open');
+          });
+
+          if (!wasOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.fade-up').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
