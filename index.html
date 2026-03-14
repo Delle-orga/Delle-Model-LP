@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#141317" />
+  <meta name="theme-color" content="#E8E8E9" />
 
   <title>Delle Model — Desktop content & model manager</title>
   <meta name="description" content="Delle Model is a locally hosted desktop application to manage, organize and sync your models and their content — images, videos, tags and downloads from external sites." />
@@ -33,14 +33,14 @@
 
   <style>
     :root {
-      --c-glass: #26282c;
+      --c-glass: #bbbbbc;
       --c-light: #fff;
       --c-dark: #000;
-      --c-content: #F9FAFB;
+      --c-content: #224;
       --c-action: #0052f5;
-      --c-bg: #141317;
-      --glass-reflex-dark: 0.8;
-      --glass-reflex-light: 0.3;
+      --c-bg: #E8E8E9;
+      --glass-reflex-dark: 1;
+      --glass-reflex-light: 1;
       --saturation: 120%;
       --color-primary: #3B82F6;
       --color-secondary: #1E40AF;
@@ -386,9 +386,9 @@
       border-radius: 99em;
       font-size: 13px;
       font-weight: 500;
-      background: color-mix(in srgb, var(--color-primary) 12%, transparent);
-      color: var(--color-primary);
-      border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+      background: color-mix(in srgb, var(--tag-color) 10%, transparent);
+      color: var(--tag-color);
+      border: 1px solid color-mix(in srgb, var(--tag-color) 22%, transparent);
     }
 
     .hero-buttons {
@@ -588,46 +588,228 @@
       flex-shrink: 0;
     }
 
-    /* ── CTA ── */
-    .cta-section {
-      text-align: center;
+    /* ── Download Section ── */
+    .download-section {
       padding: 100px 24px 120px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .cta-card {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 64px 48px;
-      border-radius: 32px;
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 900px) {
+      .download-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+
+    .download-card {
+      padding: 40px 32px;
+      border-radius: 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    .cta-card::before {
+    .download-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 6%, transparent), color-mix(in srgb, var(--color-accent) 6%, transparent));
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 4%, transparent), color-mix(in srgb, var(--color-accent) 4%, transparent));
       pointer-events: none;
     }
 
-    .cta-card h2 {
-      font-size: 36px;
+    .download-card-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 32px;
+      position: relative;
+    }
+
+    .download-card-icon.windows {
+      background: color-mix(in srgb, #0078D4 12%, transparent);
+      color: #0078D4;
+    }
+
+    .download-card-icon.macos {
+      background: color-mix(in srgb, #555 12%, transparent);
+      color: #333;
+    }
+
+    .download-card-icon.linux {
+      background: color-mix(in srgb, #E95420 12%, transparent);
+      color: #E95420;
+    }
+
+    .download-card h3 {
+      font-size: 22px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 6px;
       position: relative;
     }
 
-    .cta-card p {
-      font-size: 18px;
-      opacity: 0.6;
-      margin-bottom: 36px;
+    .download-card .download-version {
+      font-size: 14px;
+      opacity: 0.45;
+      margin-bottom: 24px;
       position: relative;
     }
 
-    .cta-card .btn-glass {
+    .download-card .download-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       position: relative;
+    }
+
+    .download-card .download-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 99em;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background-color 300ms, transform 200ms;
+    }
+
+    .download-card .download-links a:hover {
+      transform: translateY(-2px);
+    }
+
+    .download-card .download-links .dl-primary {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 18%, transparent), color-mix(in srgb, var(--color-accent) 18%, transparent));
+      color: var(--c-action);
+    }
+
+    .download-card .download-links .dl-primary:hover {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 28%, transparent), color-mix(in srgb, var(--color-accent) 28%, transparent));
+    }
+
+    .download-card .download-links .dl-secondary {
+      background: color-mix(in srgb, var(--c-glass) 14%, transparent);
+      color: var(--c-content);
+      font-size: 13px;
+      padding: 10px 20px;
+    }
+
+    .download-card .download-links .dl-secondary:hover {
+      background: color-mix(in srgb, var(--c-glass) 22%, transparent);
+    }
+
+    .download-card .download-size {
+      display: block;
+      font-size: 12px;
+      opacity: 0.35;
+      margin-top: 16px;
+      position: relative;
+    }
+
+    /* ── Support Section ── */
+    .support-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .support-card {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      border-radius: 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .support-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 4%, transparent), color-mix(in srgb, var(--color-accent) 4%, transparent));
+      pointer-events: none;
+    }
+
+    .support-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: #fff;
+      font-size: 26px;
+      position: relative;
+    }
+
+    .support-card h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .support-card p {
+      font-size: 16px;
+      opacity: 0.55;
+      margin-bottom: 28px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .support-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 99em;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 15%, transparent), color-mix(in srgb, var(--color-accent) 15%, transparent));
+      color: var(--c-action);
+      transition: background 300ms, transform 200ms;
+      position: relative;
+    }
+
+    .support-email-link:hover {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 25%, transparent), color-mix(in srgb, var(--color-accent) 25%, transparent));
+      transform: translateY(-2px);
+    }
+
+    /* ── Download toast ── */
+    .dl-toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 14px 28px;
+      border-radius: 99em;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      box-shadow: 0 8px 32px color-mix(in srgb, var(--color-primary) 30%, transparent);
+      z-index: 200;
+      opacity: 0;
+      transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 400ms;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .dl-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
 
     /* ── Footer ── */
@@ -742,15 +924,15 @@
         </p>
 
         <div class="hero-tags">
-          <span class="hero-tag">Collectors</span>
-          <span class="hero-tag">Content Creators</span>
-          <span class="hero-tag">Curators</span>
-          <span class="hero-tag">Organizers</span>
-          <span class="hero-tag">Archivists</span>
-          <span class="hero-tag">Photographers</span>
-          <span class="hero-tag">Videographers</span>
-          <span class="hero-tag">Models</span>
-          <span class="hero-tag">Media Managers</span>
+          <span class="hero-tag" style="--tag-color:#3B82F6">Collectors</span>
+          <span class="hero-tag" style="--tag-color:#8B5CF6">Content Creators</span>
+          <span class="hero-tag" style="--tag-color:#EC4899">Curators</span>
+          <span class="hero-tag" style="--tag-color:#F97316">Organizers</span>
+          <span class="hero-tag" style="--tag-color:#10B981">Archivists</span>
+          <span class="hero-tag" style="--tag-color:#06B6D4">Photographers</span>
+          <span class="hero-tag" style="--tag-color:#EAB308">Videographers</span>
+          <span class="hero-tag" style="--tag-color:#EF4444">Models</span>
+          <span class="hero-tag" style="--tag-color:#6366F1">Media Managers</span>
         </div>
 
         <div class="hero-buttons">
@@ -876,16 +1058,78 @@
     </div>
   </section>
 
-  <!-- CTA Download -->
-  <section id="download" class="cta-section">
-    <div class="cta-card card-glass fade-up">
-      <h2>Ready to organize your <span class="gradient-text">collection</span>?</h2>
-      <p>Download Delle Model for free and start managing your models right now.</p>
-      <a href="#" class="btn-glass btn-glass-accent" style="font-size: 18px; padding: 18px 40px;">
-        <i class="fas fa-download"></i> Download for Windows
+  <!-- Download -->
+  <section id="download" class="download-section">
+    <h2 class="section-title fade-up">Download <span class="gradient-text">Delle Model</span></h2>
+    <p class="section-subtitle fade-up delay-1">Free, open-source and available on all major platforms.</p>
+
+    <div class="download-grid">
+
+      <!-- Windows -->
+      <div class="card-glass download-card fade-up delay-1">
+        <div class="download-card-icon windows">
+          <i class="fab fa-windows"></i>
+        </div>
+        <h3>Windows</h3>
+        <p class="download-version">v1.0.3 &middot; 116 MB</p>
+        <div class="download-links">
+          <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/Delle.Model-Setup-1.0.0.exe" class="btn-glass dl-primary">
+            <i class="fas fa-download"></i> Download .exe
+          </a>
+        </div>
+        <span class="download-size">Windows 10+ (64-bit)</span>
+      </div>
+
+      <!-- macOS -->
+      <div class="card-glass download-card fade-up delay-2">
+        <div class="download-card-icon macos">
+          <i class="fab fa-apple"></i>
+        </div>
+        <h3>macOS</h3>
+        <p class="download-version">v1.0.3</p>
+        <div class="download-links">
+          <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/Delle.Model-1.0.0-arm64.dmg" class="btn-glass dl-primary">
+            <i class="fas fa-download"></i> Apple Silicon
+          </a>
+          <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/Delle.Model-1.0.0.dmg" class="btn-glass dl-secondary">
+            <i class="fas fa-download"></i> Intel
+          </a>
+        </div>
+        <span class="download-size">macOS 11+ &middot; 139 / 143 MB</span>
+      </div>
+
+      <!-- Linux -->
+      <div class="card-glass download-card fade-up delay-3">
+        <div class="download-card-icon linux">
+          <i class="fab fa-linux"></i>
+        </div>
+        <h3>Linux</h3>
+        <p class="download-version">v1.0.3 &middot; 153 MB</p>
+        <div class="download-links">
+          <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/Delle.Model-1.0.0.AppImage" class="btn-glass dl-primary">
+            <i class="fas fa-download"></i> Download .AppImage
+          </a>
+        </div>
+        <span class="download-size">AppImage (64-bit)</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section id="support" class="support-section">
+    <div class="support-card card-glass fade-up">
+      <div class="support-icon"><i class="fas fa-headset"></i></div>
+      <h2>Need <span class="gradient-text">help</span>?</h2>
+      <p>Have a question, found a bug or need assistance?<br />Reach out to us — we'll get back to you as soon as possible.</p>
+      <a href="mailto:delleassist@gmail.com" class="support-email-link">
+        <i class="fas fa-envelope"></i> delleassist@gmail.com
       </a>
     </div>
   </section>
+
+  <!-- Download toast -->
+  <div class="dl-toast" id="dl-toast">Thanks for downloading Delle Model!</div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -894,13 +1138,22 @@
       <div class="footer-links">
         <a href="faq.html">FAQ</a>
         <a href="#">Privacy</a>
-        <a href="#">Contact</a>
+        <a href="mailto:delleassist@gmail.com">Contact</a>
       </div>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     (function () {
+      /* ── EmailJS config ── */
+      var EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+      var EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+      var EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+
+      /* ── Mobile menu ── */
       const toggle = document.getElementById('mobile-toggle');
       const overlay = document.getElementById('mobile-overlay');
       const menu = document.getElementById('mobile-menu');
@@ -929,6 +1182,7 @@
         link.addEventListener('click', closeMenu);
       });
 
+      /* ── Scroll animations ── */
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -940,6 +1194,43 @@
 
       document.querySelectorAll('.fade-up').forEach(function (el) {
         observer.observe(el);
+      });
+
+      /* ── Download tracking ── */
+      var toast = document.getElementById('dl-toast');
+
+      function showToast() {
+        toast.classList.add('show');
+        setTimeout(function () { toast.classList.remove('show'); }, 3500);
+      }
+
+      function getOSFromHref(href) {
+        if (href.indexOf('.exe') !== -1) return 'Windows';
+        if (href.indexOf('arm64.dmg') !== -1) return 'macOS (Apple Silicon)';
+        if (href.indexOf('.dmg') !== -1) return 'macOS (Intel)';
+        if (href.indexOf('.AppImage') !== -1) return 'Linux';
+        return 'Unknown';
+      }
+
+      function getFilenameFromHref(href) {
+        return href.split('/').pop();
+      }
+
+      document.querySelectorAll('.download-card .download-links a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var href = this.getAttribute('href');
+          var os = getOSFromHref(href);
+          var filename = getFilenameFromHref(href);
+
+          showToast();
+
+          emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            os: os,
+            filename: filename,
+            download_time: new Date().toLocaleString(),
+            user_agent: navigator.userAgent
+          }).catch(function () {});
+        });
       });
     })();
   </script>
