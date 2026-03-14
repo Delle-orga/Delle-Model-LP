@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#E8E8E9" />
+  <meta name="theme-color" content="#141317" />
 
   <title>FAQ — Delle Model | Frequently Asked Questions</title>
   <meta name="description" content="Frequently asked questions about Delle Model: installation, features, syncing, downloads, compatibility and more." />
@@ -28,20 +28,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet" />
 
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.classList.toggle('light', theme === 'light');
+    })();
+  </script>
   <style>
     :root {
-      --c-glass: #bbbbbc;
+      --c-glass: #26282c;
       --c-light: #fff;
       --c-dark: #000;
-      --c-content: #224;
+      --c-content: #F9FAFB;
       --c-action: #0052f5;
-      --c-bg: #E8E8E9;
-      --glass-reflex-dark: 1;
-      --glass-reflex-light: 1;
+      --c-bg: #141317;
+      --glass-reflex-dark: 0.8;
+      --glass-reflex-light: 0.3;
       --saturation: 120%;
       --color-primary: #3B82F6;
       --color-secondary: #1E40AF;
       --color-accent: #8B5CF6;
+    }
+
+    html.light {
+      --c-glass: #bbbbbc;
+      --c-content: #224;
+      --c-bg: #E8E8E9;
+      --glass-reflex-dark: 1;
+      --glass-reflex-light: 1;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -144,6 +158,18 @@
       background-clip: text;
     }
 
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--c-content);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px 12px;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+    .theme-toggle:hover { opacity: 1; }
+
     /* ── Navbar ── */
     .navbar {
       position: fixed;
@@ -211,6 +237,26 @@
     .navbar-actions .btn-glass {
       padding: 10px 22px;
       font-size: 14px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--c-content);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px 12px;
+      opacity: 0.7;
+      border-radius: 8px;
+      transition: opacity 200ms;
+    }
+
+    .theme-toggle:hover { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .navbar-actions { display: flex !important; }
+      .navbar-actions .btn-glass { display: none; }
+      .theme-toggle { display: block; }
     }
 
     .navbar-mobile-btn {
@@ -476,6 +522,9 @@
       </div>
 
       <div class="navbar-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
         <a href="index.html#download" class="btn-glass btn-glass-primary">
           <i class="fas fa-download"></i> Download
         </a>
@@ -722,6 +771,22 @@
       menu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', closeMenu);
       });
+
+      function applyTheme(isLight) {
+        document.documentElement.classList.toggle('light', isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.content = isLight ? '#E8E8E9' : '#141317';
+        var themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) themeIcon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+      }
+      var themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function () {
+          applyTheme(!document.documentElement.classList.contains('light'));
+        });
+        applyTheme(document.documentElement.classList.contains('light'));
+      }
 
       document.querySelectorAll('.faq-question').forEach(function (btn) {
         btn.addEventListener('click', function () {

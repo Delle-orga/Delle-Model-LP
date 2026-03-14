@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#E8E8E9" />
+  <meta name="theme-color" content="#141317" />
 
   <title>Delle Model — Desktop content & model manager</title>
   <meta name="description" content="Delle Model is a locally hosted desktop application to manage, organize and sync your models and their content — images, videos, tags and downloads from external sites." />
@@ -31,20 +31,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet" />
 
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.classList.toggle('light', theme === 'light');
+    })();
+  </script>
   <style>
     :root {
-      --c-glass: #bbbbbc;
+      --c-glass: #26282c;
       --c-light: #fff;
       --c-dark: #000;
-      --c-content: #224;
+      --c-content: #F9FAFB;
       --c-action: #0052f5;
-      --c-bg: #E8E8E9;
-      --glass-reflex-dark: 1;
-      --glass-reflex-light: 1;
+      --c-bg: #141317;
+      --glass-reflex-dark: 0.8;
+      --glass-reflex-light: 0.3;
       --saturation: 120%;
       --color-primary: #3B82F6;
       --color-secondary: #1E40AF;
       --color-accent: #8B5CF6;
+    }
+
+    html.light {
+      --c-glass: #bbbbbc;
+      --c-content: #224;
+      --c-bg: #E8E8E9;
+      --glass-reflex-dark: 1;
+      --glass-reflex-light: 1;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -222,6 +236,18 @@
       gap: 12px;
     }
 
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--c-content);
+      opacity: 0.7;
+      cursor: pointer;
+      padding: 8px;
+      font-size: 18px;
+      transition: opacity 200ms;
+    }
+    .theme-toggle:hover { opacity: 1; }
+
     .navbar-actions .btn-glass {
       padding: 10px 22px;
       font-size: 14px;
@@ -236,6 +262,20 @@
       cursor: pointer;
       padding: 8px;
     }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--c-content);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+
+    .theme-toggle:hover { opacity: 1; }
 
     /* ── Mobile Menu ── */
     .mobile-overlay {
@@ -434,6 +474,85 @@
 
     @media (max-width: 480px) {
       .hero-text h1 { font-size: 34px; }
+    }
+
+    /* ── Screenshots Section ── */
+    .screenshots-section { padding-bottom: 120px; }
+
+    .screenshot-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .screenshot-item:last-child { margin-bottom: 0; }
+
+    .screenshot-item.reverse {
+      direction: rtl;
+    }
+
+    .screenshot-item.reverse > * {
+      direction: ltr;
+    }
+
+    .screenshot-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--c-glass) 20%, transparent);
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .screenshot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .screenshot-frame .screenshot-placeholder {
+      padding: 48px;
+      text-align: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--c-content);
+      opacity: 0.4;
+      font-size: 14px;
+    }
+
+    .screenshot-frame .screenshot-placeholder i {
+      font-size: 48px;
+    }
+
+    .screenshot-content h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .screenshot-content p {
+      font-size: 17px;
+      line-height: 1.7;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 900px) {
+      .screenshot-item,
+      .screenshot-item.reverse {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        direction: ltr;
+        margin-bottom: 56px;
+      }
+
+      .screenshot-item .screenshot-frame { order: -1; }
+
+      .screenshot-content h3 { font-size: 24px; }
     }
 
     /* ── Features Grid ── */
@@ -878,12 +997,16 @@
 
       <div class="navbar-links">
         <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
         <a href="#how-it-works">How it Works</a>
         <a href="#roadmap">Roadmap</a>
         <a href="faq.html">FAQ</a>
       </div>
 
       <div class="navbar-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
         <a href="#download" class="btn-glass btn-glass-primary">
           <i class="fas fa-download"></i> Download
         </a>
@@ -899,6 +1022,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-inner card-glass">
       <a href="#features"><i class="fas fa-bolt"></i> Features</a>
+      <a href="#screenshots"><i class="fas fa-images"></i> Screenshots</a>
       <a href="#how-it-works"><i class="fas fa-list-ol"></i> How it Works</a>
       <a href="#roadmap"><i class="fas fa-map"></i> Roadmap</a>
       <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
@@ -998,6 +1122,67 @@
     </div>
   </section>
 
+  <!-- Screenshots -->
+  <section id="screenshots" class="section screenshots-section">
+    <h2 class="section-title fade-up">See it in <span class="gradient-text">action</span></h2>
+    <p class="section-subtitle fade-up delay-1">Discover the main screens of Delle Model — browse models, explore categories, and enjoy your content.</p>
+
+    <div class="screenshot-item fade-up delay-1">
+      <div class="screenshot-frame liquid-glass">
+        <img src="screenshots/models-browser.png" alt="Models browser" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="screenshot-placeholder" style="display:none;"><i class="fas fa-users"></i><span>Add screenshots/models-browser.png</span></div>
+      </div>
+      <div class="screenshot-content">
+        <h3>Models Browser</h3>
+        <p>Browse all your models at a glance. Each card shows the profile picture, name and preview. Click to open a model's page and access their full collection of images and videos.</p>
+      </div>
+    </div>
+
+    <div class="screenshot-item reverse fade-up delay-2">
+      <div class="screenshot-frame liquid-glass">
+        <img src="screenshots/category.png" alt="Categories" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="screenshot-placeholder" style="display:none;"><i class="fas fa-tags"></i><span>Add screenshots/category.png</span></div>
+      </div>
+      <div class="screenshot-content">
+        <h3>Categories</h3>
+        <p>Organize your content with categories and tags. Filter by model, tags or custom criteria to quickly find what you're looking for across your entire library.</p>
+      </div>
+    </div>
+
+    <div class="screenshot-item fade-up delay-3">
+      <div class="screenshot-frame liquid-glass">
+        <img src="screenshots/model-page.png" alt="Model page" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="screenshot-placeholder" style="display:none;"><i class="fas fa-user"></i><span>Add screenshots/model-page.png</span></div>
+      </div>
+      <div class="screenshot-content">
+        <h3>Model Page</h3>
+        <p>The dedicated page for each model. View the profile, description, cover image and all associated media. Sync content from local folders or download from external sites.</p>
+      </div>
+    </div>
+
+    <div class="screenshot-item reverse fade-up delay-4">
+      <div class="screenshot-frame liquid-glass">
+        <img src="screenshots/video-viewer.png" alt="Video viewer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="screenshot-placeholder" style="display:none;"><i class="fas fa-play-circle"></i><span>Add screenshots/video-viewer.png</span></div>
+      </div>
+      <div class="screenshot-content">
+        <h3>Video Viewer</h3>
+        <p>Watch your videos in a clean, focused player. Add feats to link multiple models, bookmark favorites, and navigate between related content without leaving the viewer.</p>
+      </div>
+    </div>
+
+    <div class="screenshot-item fade-up delay-5">
+      <div class="screenshot-frame liquid-glass">
+        <img src="screenshots/picture-viewer.png" alt="Picture viewer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="screenshot-placeholder" style="display:none;"><i class="fas fa-image"></i><span>Add screenshots/picture-viewer.png</span></div>
+      </div>
+      <div class="screenshot-content">
+        <h3>Picture Viewer</h3>
+        <p>View images in fullscreen with smooth navigation. Tag your pictures, add them to favorites, and jump between images in a model's gallery or across your entire collection.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- How it Works -->
   <section id="how-it-works" class="section">
     <h2 class="section-title fade-up">How it <span class="gradient-text">works</span></h2>
@@ -1061,7 +1246,7 @@
   <!-- Download -->
   <section id="download" class="download-section">
     <h2 class="section-title fade-up">Download <span class="gradient-text">Delle Model</span></h2>
-    <p class="section-subtitle fade-up delay-1">Free, open-source and available on all major platforms.</p>
+    <p class="section-subtitle fade-up delay-1">Free, in early testing — available on Windows, macOS and Linux.</p>
 
     <div class="download-grid">
 
@@ -1181,6 +1366,24 @@
       menu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', closeMenu);
       });
+
+      /* ── Theme toggle ── */
+      function applyTheme(isLight) {
+        document.documentElement.classList.toggle('light', isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.content = isLight ? '#E8E8E9' : '#141317';
+        var icon = document.getElementById('theme-icon');
+        if (icon) icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+      }
+
+      var themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function () {
+          applyTheme(document.documentElement.classList.contains('light') ? false : true);
+        });
+        applyTheme(document.documentElement.classList.contains('light'));
+      }
 
       /* ── Scroll animations ── */
       var observer = new IntersectionObserver(function (entries) {
