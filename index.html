@@ -444,6 +444,13 @@
       position: relative;
     }
 
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .hero-visual-placeholder {
       width: 100%;
       height: 100%;
@@ -1152,7 +1159,12 @@
       </div>
 
       <div class="hero-visual liquid-glass fade-up delay-2">
-        <div class="hero-visual-placeholder">
+        <img
+          src="assets/main.png"
+          alt="App Preview"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="hero-visual-placeholder" style="display:none;">
           <i class="fas fa-desktop"></i>
           <span>App Preview</span>
         </div>
@@ -1160,47 +1172,35 @@
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features" class="section">
-    <h2 class="section-title fade-up">Everything you <span class="gradient-text">need</span></h2>
-    <p class="section-subtitle fade-up delay-1">Delle Model brings together model management, content syncing and downloading into a single application.</p>
+  <!-- How it Works -->
+  <section id="how-it-works" class="section">
+    <h2 class="section-title fade-up">How it <span class="gradient-text">works</span></h2>
+    <p class="section-subtitle fade-up delay-1">Four steps to organize your entire collection.</p>
 
-    <div class="features-grid">
-      <article class="card-glass feature-card fade-up delay-1">
-        <div class="feature-icon"><i class="fas fa-folder-open"></i></div>
-        <h3 class="feature-title">Folder Sync</h3>
-        <p class="feature-desc">Automatically sync each model's folder to keep your content always up to date.</p>
-      </article>
+    <div class="steps-grid">
+      <div class="card-glass step-card fade-up delay-1">
+        <div class="step-number gradient-text">01</div>
+        <h3 class="step-title">Install Delle Model</h3>
+        <p class="step-desc">Download and launch the app on your computer. Everything stays local.</p>
+      </div>
 
-      <article class="card-glass feature-card fade-up delay-2">
-        <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
-        <h3 class="feature-title">Full Customization</h3>
-        <p class="feature-desc">Profile pictures, descriptions, video thumbnails — customize every model in detail.</p>
-      </article>
+      <div class="card-glass step-card fade-up delay-2">
+        <div class="step-number gradient-text">02</div>
+        <h3 class="step-title">Create Your Models</h3>
+        <p class="step-desc">Add models with a profile, description and cover photo.</p>
+      </div>
 
-      <article class="card-glass feature-card fade-up delay-3">
-        <div class="feature-icon"><i class="fas fa-cloud-download-alt"></i></div>
-        <h3 class="feature-title">External Downloads</h3>
-        <p class="feature-desc">Download content from external sites directly into your local library.</p>
-      </article>
+      <div class="card-glass step-card fade-up delay-3">
+        <div class="step-number gradient-text">03</div>
+        <h3 class="step-title">Downlaod and Sync Your Content</h3>
+        <p class="step-desc">Import or download images and videos into each model's folder.</p>
+      </div>
 
-      <article class="card-glass feature-card fade-up delay-4">
-        <div class="feature-icon"><i class="fas fa-tags"></i></div>
-        <h3 class="feature-title">Smart Tags & Sorting</h3>
-        <p class="feature-desc">Tag your content, filter and sort your images and videos instantly.</p>
-      </article>
-
-      <article class="card-glass feature-card fade-up delay-5">
-        <div class="feature-icon"><i class="fas fa-users"></i></div>
-        <h3 class="feature-title">Model Feats</h3>
-        <p class="feature-desc">Link multiple models to the same video and navigate between them easily.</p>
-      </article>
-
-      <article class="card-glass feature-card fade-up delay-6">
-        <div class="feature-icon"><i class="fas fa-heart"></i></div>
-        <h3 class="feature-title">Favorites</h3>
-        <p class="feature-desc">Bookmark your favorite models, videos and images for quick access.</p>
-      </article>
+      <div class="card-glass step-card fade-up delay-4">
+        <div class="step-number gradient-text">04</div>
+        <h3 class="step-title">Explore & Sort</h3>
+        <p class="step-desc">Browse your collection with tags, favorites and advanced filters.</p>
+      </div>
     </div>
   </section>
 
@@ -1276,35 +1276,47 @@
     </div>
   </section>
 
-  <!-- How it Works -->
-  <section id="how-it-works" class="section">
-    <h2 class="section-title fade-up">How it <span class="gradient-text">works</span></h2>
-    <p class="section-subtitle fade-up delay-1">Four steps to organize your entire collection.</p>
+  <!-- Features -->
+  <section id="features" class="section">
+    <h2 class="section-title fade-up">Everything you <span class="gradient-text">need</span></h2>
+    <p class="section-subtitle fade-up delay-1">Delle Model brings together model management, content syncing and downloading into a single application.</p>
 
-    <div class="steps-grid">
-      <div class="card-glass step-card fade-up delay-1">
-        <div class="step-number gradient-text">01</div>
-        <h3 class="step-title">Install Delle Model</h3>
-        <p class="step-desc">Download and launch the app on your computer. Everything stays local.</p>
-      </div>
+    <div class="features-grid">
+      <article class="card-glass feature-card fade-up delay-1">
+        <div class="feature-icon"><i class="fas fa-folder-open"></i></div>
+        <h3 class="feature-title">Folder Sync</h3>
+        <p class="feature-desc">Automatically sync each model's folder to keep your content always up to date.</p>
+      </article>
 
-      <div class="card-glass step-card fade-up delay-2">
-        <div class="step-number gradient-text">02</div>
-        <h3 class="step-title">Create Your Models</h3>
-        <p class="step-desc">Add models with a profile, description and cover photo.</p>
-      </div>
+      <article class="card-glass feature-card fade-up delay-2">
+        <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
+        <h3 class="feature-title">Full Customization</h3>
+        <p class="feature-desc">Profile pictures, descriptions, video thumbnails — customize every model in detail.</p>
+      </article>
 
-      <div class="card-glass step-card fade-up delay-3">
-        <div class="step-number gradient-text">03</div>
-        <h3 class="step-title">Sync Your Content</h3>
-        <p class="step-desc">Import or download images and videos into each model's folder.</p>
-      </div>
+      <article class="card-glass feature-card fade-up delay-3">
+        <div class="feature-icon"><i class="fas fa-cloud-download-alt"></i></div>
+        <h3 class="feature-title">External Downloads</h3>
+        <p class="feature-desc">Download content from external sites directly into your local library.</p>
+      </article>
 
-      <div class="card-glass step-card fade-up delay-4">
-        <div class="step-number gradient-text">04</div>
-        <h3 class="step-title">Explore & Sort</h3>
-        <p class="step-desc">Browse your collection with tags, favorites and advanced filters.</p>
-      </div>
+      <article class="card-glass feature-card fade-up delay-4">
+        <div class="feature-icon"><i class="fas fa-tags"></i></div>
+        <h3 class="feature-title">Smart Tags & Sorting</h3>
+        <p class="feature-desc">Tag your content, filter and sort your images and videos instantly.</p>
+      </article>
+
+      <article class="card-glass feature-card fade-up delay-5">
+        <div class="feature-icon"><i class="fas fa-users"></i></div>
+        <h3 class="feature-title">Model Feats</h3>
+        <p class="feature-desc">Link multiple models to the same video and navigate between them easily.</p>
+      </article>
+
+      <article class="card-glass feature-card fade-up delay-6">
+        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+        <h3 class="feature-title">Favorites</h3>
+        <p class="feature-desc">Bookmark your favorite models, videos and images for quick access.</p>
+      </article>
     </div>
   </section>
 
