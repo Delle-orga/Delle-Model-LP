@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#141317" />
 
   <title>Delle Model — Desktop content manager for creator-economy archives</title>
-  <meta name="description" content="Per-creator timeline with activity histogram. Hash dedup. Metadata backfill via gallery-dl + yt-dlp. 100% local. Pro €49, Lifetime €79." />
+  <meta name="description" content="Per-creator timeline with activity histogram. Hash dedup. Metadata backfill via gallery-dl + yt-dlp. 100% local. Free download." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://dellemodel.app/" />
 
@@ -22,7 +22,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Delle Model" />
-  <meta name="twitter:description" content="Desktop content manager for creator-economy archives. 100% local. Pro €49." />
+  <meta name="twitter:description" content="Desktop content manager for creator-economy archives. 100% local. Free download." />
   <meta name="twitter:image" content="https://dellemodel.app/og-image.png" />
 
   <link rel="icon" type="image/png" href="/favicon.png" />
@@ -50,12 +50,11 @@
       <div class="navbar-links">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#download">Download</a>
         <a href="/faq.html">FAQ</a>
       </div>
       <div class="navbar-actions">
-        <a href="/login" class="btn-glass btn-ghost">Sign in</a>
-        <a href="#pricing" class="btn-glass btn-primary">Get Pro</a>
+        <a href="#download" class="btn-glass btn-primary"><i class="fas fa-download"></i> Download</a>
       </div>
       <button class="navbar-mobile-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </div>
@@ -90,8 +89,8 @@
         </div>
 
         <div class="hero-buttons">
-          <a href="#pricing" class="btn-glass btn-primary btn-lg">
-            <i class="fas fa-bolt"></i> Get Pro · €49
+          <a href="#download" class="btn-glass btn-primary btn-lg">
+            <i class="fas fa-download"></i> Download free
           </a>
           <a href="#how-it-works" class="btn-glass btn-ghost btn-lg">
             <i class="fas fa-play"></i> Watch demo
@@ -214,108 +213,54 @@
         <h3 class="feature-title">LAN access, opt-in</h3>
         <p class="feature-desc">Browse your library from your phone or tablet on the same network. Same UI, no extra install. Off by default — turn on when you want it.</p>
       </div>
-      <div class="feature-card liquid-glass fade-up delay-5">
-        <div class="feature-icon" style="--icon-color:#06B6D4"><i class="fas fa-shield-halved"></i></div>
-        <h3 class="feature-title">Encrypted backup (Pro)</h3>
-        <p class="feature-desc">Password-derived AES-256 backup of your entire database. Drop on cloud storage of your choice, restore anywhere — without exposing the contents.</p>
-      </div>
     </div>
   </section>
 
-  <!-- ── Pricing ── -->
-  <section id="pricing" class="section pricing-section">
-    <h2 class="section-title fade-up">Simple <span class="gradient-text">pricing</span></h2>
-    <p class="section-subtitle fade-up delay-1">Pay once. Own it. No subscriptions you forget to cancel.</p>
-
-    <div class="pricing-grid fade-up delay-2">
-      <div class="price-card liquid-glass">
-        <div class="price-card-header">
-          <h3>Pro</h3>
-          <span class="price-badge">Most popular</span>
-        </div>
-        <div class="price-amount">
-          <span class="price-currency">€</span><span class="price-num">39</span><span class="price-period">one-time</span>
-        </div>
-        <p class="price-tagline">Full Delle Model. 12 months of updates included.</p>
-        <ul class="price-features">
-          <li><i class="fas fa-check"></i> All current and future features in v1.x</li>
-          <li><i class="fas fa-check"></i> Timeline + activity histogram</li>
-          <li><i class="fas fa-check"></i> Metadata backfill (gallery-dl + yt-dlp)</li>
-          <li><i class="fas fa-check"></i> Hash dedup (exact + perceptual)</li>
-          <li><i class="fas fa-check"></i> Smart playlists &amp; bulk operations</li>
-          <li><i class="fas fa-check"></i> Encrypted DB backup</li>
-          <li><i class="fas fa-check"></i> Use on all your devices</li>
-          <li><i class="fas fa-check"></i> Priority support</li>
-        </ul>
-        <a href="/buy/pro" class="btn-glass btn-primary btn-block">Buy Pro · €49</a>
-        <p class="price-fine">Optional €19/year to keep updating after 12 months. Or stay on your version forever — it never expires.</p>
-      </div>
-
-      <div class="price-card liquid-glass price-card-featured">
-        <div class="price-card-header">
-          <h3>Lifetime</h3>
-          <span class="price-badge price-badge-hot">Launch deal · limited</span>
-        </div>
-        <div class="price-amount">
-          <span class="price-currency">€</span><span class="price-num">79</span><span class="price-period">forever</span>
-        </div>
-        <p class="price-tagline">Everything Pro has. Plus every future update. Forever.</p>
-        <ul class="price-features">
-          <li><i class="fas fa-check"></i> Everything in Pro</li>
-          <li><i class="fas fa-check"></i> <strong>All future updates, forever</strong></li>
-          <li><i class="fas fa-check"></i> <strong>All future major versions (v2, v3, ...)</strong></li>
-          <li><i class="fas fa-check"></i> No renewal, no billing again, ever</li>
-          <li><i class="fas fa-check"></i> Founder badge in private Discord</li>
-          <li><i class="fas fa-check"></i> Direct vote on the next features</li>
-          <li><i class="fas fa-check"></i> Crypto accepted (BTC, ETH, USDC, Monero)</li>
-        </ul>
-        <a href="/buy/lifetime" class="btn-glass btn-primary btn-block">Buy Lifetime · €79</a>
-        <p class="price-fine"><i class="fas fa-hourglass-half"></i> Launch deal — only available during the first 30 days OR until 200 sold, whichever comes first.</p>
-      </div>
-    </div>
-
-    <div class="pricing-trust fade-up delay-3">
-      <div class="trust-item"><i class="fas fa-shield-halved"></i><span>14-day refund, no questions</span></div>
-      <div class="trust-item"><i class="fas fa-lock"></i><span>Stripe + Gumroad checkout</span></div>
-      <div class="trust-item"><i class="fas fa-bitcoin-sign"></i><span>Crypto via NowPayments (Lifetime)</span></div>
-      <div class="trust-item"><i class="fas fa-rotate-left"></i><span>License re-issuable any time</span></div>
-    </div>
-  </section>
-
-  <!-- ── Download / installer ── -->
+  <!-- ── Download / installer ──
+       Download URLs point to the latest release on Delle-orga/Delle-Model-release.
+       Update the version (currently v1.5.0) on every new release, OR migrate
+       electron-builder's artifactName to a version-less pattern (e.g.
+       `${name}.${ext}`) and switch to /releases/latest/download/delle-model.exe
+       for zero-maintenance links. -->
   <section id="download" class="section download-section">
     <h2 class="section-title fade-up">Available on every <span class="gradient-text">desktop</span></h2>
-    <p class="section-subtitle fade-up delay-1">One license, all your devices.</p>
+    <p class="section-subtitle fade-up delay-1">Free during the closed beta. No account required.</p>
 
     <div class="download-grid fade-up delay-2">
-      <div class="dl-card liquid-glass">
+      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/download/v1.5.0/delle-model-1.5.0.exe" class="dl-card liquid-glass">
         <div class="dl-os-icon"><i class="fab fa-windows"></i></div>
         <div class="dl-os">Windows</div>
         <div class="dl-format">10 / 11 · .exe installer</div>
-      </div>
-      <div class="dl-card liquid-glass">
+        <div class="dl-action"><i class="fas fa-download"></i> Download</div>
+      </a>
+      <div class="dl-card liquid-glass dl-card-disabled" aria-disabled="true">
         <div class="dl-os-icon"><i class="fab fa-apple"></i></div>
         <div class="dl-os">macOS</div>
-        <div class="dl-format">12+ · Universal .dmg</div>
+        <div class="dl-format">Coming soon — build locally for now</div>
+        <div class="dl-action dl-action-muted">Soon</div>
       </div>
-      <div class="dl-card liquid-glass">
+      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/download/v1.5.0/delle-model-1.5.0.AppImage" class="dl-card liquid-glass">
         <div class="dl-os-icon"><i class="fab fa-linux"></i></div>
         <div class="dl-os">Linux</div>
         <div class="dl-format">.AppImage · x86_64</div>
-      </div>
+        <div class="dl-action"><i class="fas fa-download"></i> Download</div>
+      </a>
     </div>
-    <p class="download-meta fade-up delay-3">SHA-256 checksums on every release. Code-signed Windows installer. Notarized macOS build.</p>
+    <p class="download-meta fade-up delay-3">
+      SHA-256 checksums on every release.
+      <a href="https://github.com/Delle-orga/Delle-Model-release/releases" target="_blank" rel="noreferrer noopener">All releases &amp; changelog →</a>
+    </p>
   </section>
 
   <!-- ── Support ── -->
   <section id="support" class="support-section">
     <div class="support-content liquid-glass fade-up">
       <h2>Need <span class="gradient-text">help</span>?</h2>
-      <p>Pro customers get priority support via a private Discord channel. General questions in the FAQ or public Discord.</p>
+      <p>Closed beta — support and bug reports happen in the Discord. General questions in the FAQ.</p>
       <div class="support-buttons">
         <a href="/faq.html" class="btn-glass btn-ghost"><i class="fas fa-circle-question"></i> Read FAQ</a>
         <a href="mailto:hello@dellemodel.app" class="btn-glass btn-ghost"><i class="fas fa-envelope"></i> Email us</a>
-        <a href="#" class="btn-glass btn-ghost"><i class="fab fa-discord"></i> Join Discord</a>
+        <a href="https://discord.gg/PCryCjDkJc" target="_blank" rel="noreferrer noopener" class="btn-glass btn-ghost"><i class="fab fa-discord"></i> Join Discord</a>
       </div>
     </div>
   </section>
@@ -326,9 +271,7 @@
       <span class="footer-text">© 2026 Delle Model. All rights reserved.</span>
       <div class="footer-links">
         <a href="/faq.html">FAQ</a>
-        <a href="/legal/terms">Terms</a>
-        <a href="/legal/privacy">Privacy</a>
-        <a href="/legal/refund">Refund</a>
+        <a href="https://github.com/Delle-orga/Delle-Model-release/releases" target="_blank" rel="noreferrer noopener">Releases</a>
       </div>
     </div>
   </footer>

@@ -521,8 +521,39 @@ ul { list-style: none; }
   margin: 0 auto;
 }
 @media (max-width: 700px) { .download-grid { grid-template-columns: 1fr; } }
-.dl-card { padding: 28px 24px; transition: transform 200ms; }
-.dl-card:hover { transform: translateY(-3px); }
+.dl-card {
+  padding: 28px 24px;
+  transition: transform 200ms, box-shadow 200ms;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.dl-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--color-accent) 24%, transparent);
+}
+.dl-card-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.dl-card-disabled:hover { transform: none; box-shadow: none; }
+.dl-action {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+.dl-action-muted { color: inherit; opacity: 0.55; font-weight: 500; }
+.download-meta a {
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-left: 6px;
+}
+.download-meta a:hover { text-decoration: underline; }
 .dl-os-icon {
   width: 48px;
   height: 48px;
