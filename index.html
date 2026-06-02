@@ -8,14 +8,14 @@
   <title>Delle Model — Desktop content manager for creator-economy archives</title>
   <meta name="description" content="Per-creator timeline with activity histogram. Hash dedup. Metadata backfill via gallery-dl + yt-dlp. 100% local desktop app." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://dellemodel.app/" />
+  <link rel="canonical" href="https://web-production-edab3.up.railway.app/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Delle Model — Desktop content manager for creator archives" />
   <meta property="og:description" content="Per-creator timeline. Hash dedup. Metadata backfill. 100% local." />
-  <meta property="og:url" content="https://dellemodel.app/" />
-  <meta property="og:image" content="https://dellemodel.app/assets/main.png" />
+  <meta property="og:url" content="https://web-production-edab3.up.railway.app/" />
+  <meta property="og:image" content="https://web-production-edab3.up.railway.app/assets/main.png" />
   <meta property="og:image:width" content="1920" />
   <meta property="og:image:height" content="1080" />
   <meta property="og:image:alt" content="Delle Model — per-creator timeline with activity histogram, hash dedup, metadata backfill" />
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Delle Model" />
   <meta name="twitter:description" content="Desktop content manager for creator-economy archives. 100% local." />
-  <meta name="twitter:image" content="https://dellemodel.app/assets/main.png" />
+  <meta name="twitter:image" content="https://web-production-edab3.up.railway.app/assets/main.png" />
   <meta name="twitter:image:alt" content="Delle Model — per-creator timeline with activity histogram, hash dedup, metadata backfill" />
   <meta name="twitter:site" content="@dellemodel" />
   <meta name="twitter:creator" content="@dellemodel" />
@@ -35,9 +35,10 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Structured data: SoftwareApplication for rich SERP results (name, OS,
-       category, download URL, free price). Updated automatically by Google
-       once it next crawls; verify via https://search.google.com/test/rich-results -->
+  <!-- Structured data: SoftwareApplication for rich SERP results.
+       No offers/price block on purpose — beta stays silent on pricing.
+       softwareVersion intentionally omitted so this doesn't go stale on every
+       release. Verify with https://search.google.com/test/rich-results -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,36 +48,13 @@
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "DesktopApplication",
     "description": "Desktop content manager for creator-economy archives. Organizes media per creator with a timeline + activity histogram. Hash dedup, metadata backfill from gallery-dl and yt-dlp. 100% local SQLite, no cloud.",
-    "url": "https://dellemodel.app/",
+    "url": "https://web-production-edab3.up.railway.app/",
     "downloadUrl": "https://github.com/Delle-orga/Delle-Model-release/releases/latest",
-    "softwareVersion": "1.5.0",
-    "image": "https://dellemodel.app/assets/main.png",
-    "screenshot": "https://dellemodel.app/assets/main.png",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock"
-    },
+    "image": "https://web-production-edab3.up.railway.app/assets/main.png",
+    "screenshot": "https://web-production-edab3.up.railway.app/assets/main.png",
     "publisher": {
       "@type": "Organization",
       "name": "Delle Model"
-    }
-  }
-  </script>
-
-  <!-- Structured data: WebSite — enables a sitelinks searchbox in Google for
-       brand queries once the site has enough authority. -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Delle Model",
-    "url": "https://dellemodel.app/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://dellemodel.app/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
     }
   }
   </script>
@@ -312,7 +290,6 @@
       <p>Closed beta — support and bug reports happen in the Discord. General questions in the FAQ.</p>
       <div class="support-buttons">
         <a href="/faq.html" class="btn-glass btn-ghost"><i class="fas fa-circle-question"></i> Read FAQ</a>
-        <a href="mailto:hello@dellemodel.app" class="btn-glass btn-ghost"><i class="fas fa-envelope"></i> Email us</a>
         <a href="https://discord.gg/PCryCjDkJc" target="_blank" rel="noreferrer noopener" class="btn-glass btn-ghost"><i class="fab fa-discord"></i> Join Discord</a>
       </div>
     </div>
