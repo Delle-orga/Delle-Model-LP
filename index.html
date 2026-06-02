@@ -248,17 +248,17 @@
   </section>
 
   <!-- ── Download / installer ──
-       Download URLs point to the latest release on Delle-orga/Delle-Model-release.
-       Update the version (currently v1.5.0) on every new release, OR migrate
-       electron-builder's artifactName to a version-less pattern (e.g.
-       `${name}.${ext}`) and switch to /releases/latest/download/delle-model.exe
-       for zero-maintenance links. -->
+       Download URLs use GitHub's /releases/latest/download/<filename> pattern,
+       which redirects automatically to the newest release's matching asset.
+       Filenames are kept version-less by electron-builder's artifactName
+       template (see Delle-Model electron/package.json) — so these URLs never
+       need to change per release. -->
   <section id="download" class="section download-section">
     <h2 class="section-title fade-up">Available on every <span class="gradient-text">desktop</span></h2>
     <p class="section-subtitle fade-up delay-1">Windows, macOS, Linux.</p>
 
     <div class="download-grid fade-up delay-2">
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/download/v1.5.0/delle-model-Setup-1.5.0.exe" class="dl-card liquid-glass">
+      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe" class="dl-card liquid-glass">
         <div class="dl-os-icon"><i class="fab fa-windows"></i></div>
         <div class="dl-os">Windows</div>
         <div class="dl-format">10 / 11 · .exe installer</div>
@@ -270,7 +270,7 @@
         <div class="dl-format">Coming soon — build locally for now</div>
         <div class="dl-action dl-action-muted">Soon</div>
       </div>
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/download/v1.5.0/delle-model-1.5.0.AppImage" class="dl-card liquid-glass">
+      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage" class="dl-card liquid-glass">
         <div class="dl-os-icon"><i class="fab fa-linux"></i></div>
         <div class="dl-os">Linux</div>
         <div class="dl-format">.AppImage · x86_64</div>
