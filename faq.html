@@ -414,7 +414,7 @@
     }
 
     .faq-item.open .faq-answer {
-      max-height: 300px;
+      max-height: 600px;
     }
 
     .faq-answer-inner {
@@ -556,42 +556,82 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is Delle Model?",
+        "name": "Does gallery-dl have a GUI? Is Delle Model a graphical interface for gallery-dl?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Delle Model is a locally hosted desktop application that lets you manage, organize and sync your models and their multimedia content (images and videos). Everything stays on your computer."
+          "text": "Yes. Delle Model is a desktop app (Windows and Linux now, macOS coming soon) that runs gallery-dl for you — no command line needed. But it goes further than a typical wrapper: after gallery-dl downloads, Delle organizes everything into a browsable library with one profile per creator, plus tags, favorites, notes and a built-in viewer. Most gallery-dl GUIs only queue downloads; Delle is also what you use after the files land."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Delle Model free?",
+        "name": "Is there a yt-dlp GUI that also organizes my downloads instead of just queuing them?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, Delle Model is completely free. You can download and use the application at no cost."
+          "text": "That is exactly Delle Model's niche. It uses yt-dlp (and gallery-dl) under the hood to fetch videos and galleries, then automatically sorts everything into per-creator profiles with tags, favorites and a player. Dedicated yt-dlp GUIs stop the moment the file is saved; Delle gives those files a home — a real library you can browse, search and deduplicate."
         }
       },
       {
         "@type": "Question",
-        "name": "Does my data stay on my computer?",
+        "name": "How do I organize gallery-dl or yt-dlp downloads by creator without hand-writing folder templates?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutely. Delle Model is hosted locally — no data is sent to an external server. All your content remains private on your machine."
+          "text": "Point Delle Model at the folders where your media already lives and sync. Subfolders are auto-detected as creators, so you don't need to design a directory or output-template config — each creator becomes a profile holding all their videos and images. A folder watcher keeps the library in sync as new downloads arrive, so you skip the manual scripting most people do with gallery-dl's directory option or yt-dlp's output templates."
         }
       },
       {
         "@type": "Question",
-        "name": "Which operating systems does Delle Model support?",
+        "name": "Can I browse and view what gallery-dl already downloaded, together with its metadata?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Delle Model is currently available for Windows. macOS and Linux versions are planned in the roadmap."
+          "text": "Yes. Delle Model reads the sidecar metadata gallery-dl and yt-dlp save next to your files and can backfill post dates, descriptions and tags back onto media you downloaded months ago. You then browse it all in a built-in viewer and swipe mode, grouped by creator — instead of digging through raw folders with no context."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I download content from external sites?",
+        "name": "Can I auto-import new downloads so they show up in my library automatically?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Delle Model includes a built-in download system that lets you fetch images and videos from compatible sites directly into the corresponding model's folder."
+          "text": "Yes. Delle Model watches your media folders and auto-syncs files that are added, removed or modified, so new gallery-dl or yt-dlp downloads appear in the right creator's profile without a manual re-import. During sync it also hashes media for dedup and can backfill metadata from the sidecar files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SHA-256 and perceptual hash deduplication, and does Delle do both?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SHA-256 (exact) hashing finds byte-for-byte identical files — the same download saved twice. Perceptual hashing (Delle uses dHash) finds visually similar media, so it catches the same image or video saved in a different resolution, format or as a repost. Delle Model runs both automatically on sync, so duplicates and near-duplicates surface as part of your normal library workflow rather than as a separate cleanup chore."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add tags, favorites and notes to downloaded creator content, and find it later?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every image and video can take custom tags and be marked a favorite, and each creator profile holds notes and links. You can then filter and sort by tag, creator, date or media type, and bulk-select across pages to mass-tag, mass-move or recycle. A built-in Statistics dashboard totals your models, videos, images, favorites and runtime, and shows your most-viewed videos and most-used tags."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Delle Model a Stash alternative that doesn't need Docker or a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Stash is a self-hosted server you configure (Docker, ports, scrapers). Delle Model is a one-click desktop installer — no Docker, no server, no web setup. It also downloads content itself via gallery-dl and yt-dlp, which Stash does not, and it organizes around a creator-first profile (videos, images, tags, favorites, notes, links, timeline). If you wanted Stash without the setup friction, this is the lighter, local desktop option."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Delle Model really 100% local? Any cloud, account or telemetry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is fully local. There is no cloud, no account and no telemetry. Your whole library lives on your disk as a portable file you can export with one click and restore on another machine. An internet connection is only used when you actively download content via gallery-dl or yt-dlp, or if you opt in to access your library over your own LAN."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do I get a Delle Model beta key, and is it free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delle Model is a free closed beta. You get a free beta key by joining the Discord, which is also where new builds, support and the roadmap are posted. There is no payment and no subscription — download the Windows installer or the Linux AppImage and use a key from Discord to get in."
         }
       }
     ]
@@ -602,7 +642,7 @@
 
   <!-- Alpha warning -->
   <div class="alpha-banner" id="alpha-banner">
-    <span class="alpha-banner-inner"><i class="fas fa-flask"></i> Delle Model is currently in alpha. You may encounter bugs or unstable behavior.</span>
+    <span class="alpha-banner-inner"><i class="fas fa-flask"></i> Delle Model is in closed beta. You may encounter bugs or unstable behavior.</span>
     <button class="alpha-banner-close" id="alpha-banner-close" aria-label="Close"><i class="fas fa-times"></i></button>
   </div>
   <script>!function(){if(localStorage.getItem('alphaBannerClosed')==='true'){var b=document.getElementById('alpha-banner');if(b)b.classList.add('closed');}}();</script>
@@ -618,7 +658,7 @@
       <div class="navbar-links">
         <a href="index.html#features">Features</a>
         <a href="index.html#how-it-works">How it Works</a>
-        <a href="index.html#roadmap">Roadmap</a>
+        <a href="index.html#download">Download</a>
         <a href="faq.html" style="opacity:1">FAQ</a>
       </div>
 
@@ -642,7 +682,6 @@
     <div class="mobile-menu-inner card-glass">
       <a href="index.html#features"><i class="fas fa-bolt"></i> Features</a>
       <a href="index.html#how-it-works"><i class="fas fa-list-ol"></i> How it Works</a>
-      <a href="index.html#roadmap"><i class="fas fa-map"></i> Roadmap</a>
       <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
       <a href="index.html#download"><i class="fas fa-download"></i> Download</a>
     </div>
@@ -658,168 +697,132 @@
   <div class="faq-container">
 
     <section class="faq-category fade-up">
-      <h2 class="faq-category-title"><i class="fas fa-info-circle" style="margin-right:8px;opacity:0.5"></i> General</h2>
+      <h2 class="faq-category-title"><i class="fas fa-download" style="margin-right:8px;opacity:0.5"></i> gallery-dl &amp; yt-dlp</h2>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          What is Delle Model?
+          Does gallery-dl have a GUI? Is Delle Model a graphical interface for gallery-dl?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Delle Model is a locally hosted desktop application that lets you manage, organize and sync your models and their multimedia content (images and videos). Everything stays on your computer, ensuring complete privacy.
+            Yes. Delle Model is a desktop app (Windows and Linux now, macOS coming soon) that runs gallery-dl for you — no command line needed. But it goes further than a typical wrapper: after gallery-dl downloads, Delle organizes everything into a browsable library with one profile per creator, plus tags, favorites, notes and a built-in viewer. Most gallery-dl GUIs only queue downloads; Delle is also what you use after the files land.
           </div>
         </div>
       </div>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          Is Delle Model free?
+          Is there a yt-dlp GUI that also organizes my downloads instead of just queuing them?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Yes, Delle Model is completely free. You can download and use the application at no cost and with no subscription.
+            That is exactly Delle Model's niche. It uses yt-dlp (and gallery-dl) under the hood to fetch videos and galleries, then automatically sorts everything into per-creator profiles with tags, favorites and a player. Dedicated yt-dlp GUIs stop the moment the file is saved; Delle gives those files a home — a real library you can browse, search and deduplicate.
           </div>
         </div>
       </div>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          Does my data stay on my computer?
+          How do I organize gallery-dl or yt-dlp downloads by creator without hand-writing folder templates?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Absolutely. Delle Model is hosted locally — no data is sent to an external server. All your content remains private and secure on your machine.
+            Point Delle Model at the folders where your media already lives and sync. Subfolders are auto-detected as creators, so you don't need to design a directory or output-template config — each creator becomes a profile holding all their videos and images. A folder watcher keeps the library in sync as new downloads arrive, so you skip the manual scripting most people do with gallery-dl's directory option or yt-dlp's output templates.
           </div>
         </div>
       </div>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          Which operating systems does Delle Model support?
+          Can I browse and view what gallery-dl already downloaded, together with its metadata?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Delle Model is currently available for Windows. macOS and Linux versions are planned in our roadmap and will be coming soon.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq-category fade-up">
-      <h2 class="faq-category-title"><i class="fas fa-cogs" style="margin-right:8px;opacity:0.5"></i> Features</h2>
-
-      <div class="faq-item card-glass">
-        <button class="faq-question">
-          How do I create a model?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            From the main interface, click the create button. You can set a name, description, profile picture and cover photo. A local folder will be automatically created to store the associated content.
+            Yes. Delle Model reads the sidecar metadata gallery-dl and yt-dlp save next to your files and can backfill post dates, descriptions and tags back onto media you downloaded months ago. You then browse it all in a built-in viewer and swipe mode, grouped by creator — instead of digging through raw folders with no context.
           </div>
         </div>
       </div>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          How does folder syncing work?
+          Can I auto-import new downloads so they show up in my library automatically?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Each model is linked to a local folder. Delle Model monitors that folder and automatically syncs images and videos that are added, removed or modified. Your library always stays up to date.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item card-glass">
-        <button class="faq-question">
-          How do I download content from external sites?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Delle Model includes a built-in download system that lets you fetch images and videos from compatible sites directly into the corresponding model's folder. Simply paste the URL and start the download.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item card-glass">
-        <button class="faq-question">
-          What are "feats" on a video?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            "Feats" let you link multiple models to the same video. For example, if a video features two models, you can tag them both and find that video from either model's page.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item card-glass">
-        <button class="faq-question">
-          How do tags and sorting work?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            You can assign custom tags to each image or video. Then use the search filters to sort your content by tag, model, date or media type.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item card-glass">
-        <button class="faq-question">
-          Can I bookmark content as favorites?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Yes! You can add models, videos and images to your favorites. Your favorites are accessible from a dedicated section for quick access.
+            Yes. Delle Model watches your media folders and auto-syncs files that are added, removed or modified, so new gallery-dl or yt-dlp downloads appear in the right creator's profile without a manual re-import. During sync it also hashes media for dedup and can backfill metadata from the sidecar files.
           </div>
         </div>
       </div>
     </section>
 
     <section class="faq-category fade-up">
-      <h2 class="faq-category-title"><i class="fas fa-wrench" style="margin-right:8px;opacity:0.5"></i> Technical</h2>
+      <h2 class="faq-category-title"><i class="fas fa-layer-group" style="margin-right:8px;opacity:0.5"></i> Organizing, dedup &amp; comparison</h2>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          Does the app require an internet connection?
+          What is the difference between SHA-256 and perceptual hash deduplication, and does Delle do both?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            No, Delle Model works entirely offline. An internet connection is only needed to download content from external sites.
+            SHA-256 (exact) hashing finds byte-for-byte identical files — the same download saved twice. Perceptual hashing (Delle uses dHash) finds visually similar media, so it catches the same image or video saved in a different resolution, format or as a repost. Delle Model runs both automatically on sync, so duplicates and near-duplicates surface as part of your normal library workflow rather than as a separate cleanup chore.
           </div>
         </div>
       </div>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          How are video thumbnails generated?
+          How do I add tags, favorites and notes to downloaded creator content, and find it later?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Delle Model automatically generates thumbnails for each imported video. You can also customize the thumbnail by choosing a specific frame or uploading your own image.
+            Every image and video can take custom tags and be marked a favorite, and each creator profile holds notes and links. You can then filter and sort by tag, creator, date or media type, and bulk-select across pages to mass-tag, mass-move or recycle. A built-in Statistics dashboard totals your models, videos, images, favorites and runtime, and shows your most-viewed videos and most-used tags.
           </div>
         </div>
       </div>
 
       <div class="faq-item card-glass">
         <button class="faq-question">
-          What image and video formats are supported?
+          Is Delle Model a Stash alternative that doesn't need Docker or a server?
           <i class="fas fa-chevron-down"></i>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Delle Model supports common image formats (JPG, PNG, WebP, GIF) as well as standard video formats (MP4, MKV, AVI, WebM). Additional formats may be added based on demand.
+            Yes. Stash is a self-hosted server you configure (Docker, ports, scrapers). Delle Model is a one-click desktop installer — no Docker, no server, no web setup. It also downloads content itself via gallery-dl and yt-dlp, which Stash does not, and it organizes around a creator-first profile (videos, images, tags, favorites, notes, links, timeline). If you wanted Stash without the setup friction, this is the lighter, local desktop option.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-category fade-up">
+      <h2 class="faq-category-title"><i class="fas fa-shield-halved" style="margin-right:8px;opacity:0.5"></i> Privacy, platforms &amp; beta</h2>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          Is Delle Model really 100% local? Any cloud, account or telemetry?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            It is fully local. There is no cloud, no account and no telemetry. Your whole library lives on your disk as a portable file you can export with one click and restore on another machine. An internet connection is only used when you actively download content via gallery-dl or yt-dlp, or if you opt in to access your library over your own LAN.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item card-glass">
+        <button class="faq-question">
+          Where do I get a Delle Model beta key, and is it free?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Delle Model is a free closed beta. You get a free beta key by joining the Discord, which is also where new builds, support and the roadmap are posted. There is no payment and no subscription — download the Windows installer or the Linux AppImage and use a key from Discord to get in.
           </div>
         </div>
       </div>
@@ -838,8 +841,8 @@
       <span class="footer-text">&copy; 2026 Delle Model. All rights reserved.</span>
       <div class="footer-links">
         <a href="faq.html">FAQ</a>
-        <a href="#">Privacy</a>
-        <a href="#">Contact</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener">Discord</a>
+        <a href="https://github.com/Delle-orga/Delle-Model-release/releases" target="_blank" rel="noreferrer noopener">Releases</a>
       </div>
     </div>
   </footer>
