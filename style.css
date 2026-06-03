@@ -305,22 +305,27 @@ ul { list-style: none; }
   z-index: 0;
 }
 .hero-bg-glow-1 {
-  top: 6%;
-  left: -10%;
+  top: 5%;
+  left: -2%;
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, var(--color-accent), transparent 70%);
   animation: glow-drift-1 14s ease-in-out infinite alternate;
 }
 .hero-bg-glow-2 {
-  bottom: -12%;
-  right: -10%;
+  bottom: 6%;
+  right: -2%;
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, var(--color-pink), transparent 70%);
   opacity: 0.4;
   animation: glow-drift-2 18s ease-in-out infinite alternate;
 }
+/* Light mode: the saturated blobs read as harsh stains over the pale bg —
+   soften them into a gentle wash. The repositioning above keeps each glow's
+   colored core inside .hero so overflow:hidden only clips the transparent tail. */
+html.light .hero-bg-glow-1 { opacity: 0.32; }
+html.light .hero-bg-glow-2 { opacity: 0.26; }
 @keyframes glow-drift-1 { from { transform: translate(0, 0); } to { transform: translate(40px, 30px); } }
 @keyframes glow-drift-2 { from { transform: translate(0, 0); } to { transform: translate(-40px, -20px); } }
 .hero-content {
