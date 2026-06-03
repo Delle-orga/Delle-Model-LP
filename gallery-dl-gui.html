@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#E8E8E9" />
+
+  <title>gallery-dl GUI for Windows &amp; Linux — download AND organize by creator | Delle Model</title>
+  <meta name="description" content="A free gallery-dl GUI for Windows &amp; Linux — run gallery-dl without the command line, then organize everything it downloads into a browsable library, one profile per creator. Hash dedup, metadata backfill. 100% local." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dellemodel.app/gallery-dl-gui.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="A gallery-dl GUI — and a library for everything it downloads" />
+  <meta property="og:description" content="Run gallery-dl without the terminal, then organize everything into a per-creator library. Hash dedup, metadata backfill, 100% local." />
+  <meta property="og:url" content="https://dellemodel.app/gallery-dl-gui.html" />
+  <meta property="og:image" content="https://dellemodel.app/assets/main-white.png" />
+  <meta property="og:site_name" content="Delle Model" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A gallery-dl GUI — and a library for everything it downloads" />
+  <meta name="twitter:description" content="Run gallery-dl without the terminal, then organize everything into a per-creator library. 100% local." />
+  <meta name="twitter:image" content="https://dellemodel.app/assets/main-white.png" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Delle Model", "item": "https://dellemodel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "gallery-dl GUI", "item": "https://dellemodel.app/gallery-dl-gui.html" }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet" />
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.classList.toggle('light', theme === 'light');
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+<body>
+  <!-- ── Navbar ── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner liquid-glass">
+      <a href="/" class="navbar-logo">
+        <span class="navbar-logo-icon"><i class="fas fa-cube"></i></span>
+        <span>Delle Model</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/#features">Features</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#download">Download</a>
+        <a href="/faq.html">FAQ</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+        <a href="/#download" class="btn-glass btn-primary"><i class="fas fa-download"></i> Download</a>
+      </div>
+      <button class="navbar-mobile-btn" id="mobile-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- ── Mobile menu ── -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner liquid-glass">
+      <a href="/#features"><i class="fas fa-bolt"></i> Features</a>
+      <a href="/#how-it-works"><i class="fas fa-list-ol"></i> How it works</a>
+      <a href="/faq.html"><i class="fas fa-circle-question"></i> FAQ</a>
+      <a href="/#download" class="mobile-menu-cta"><i class="fas fa-download"></i> Download</a>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-bg-glow hero-bg-glow-1"></div>
+    <div class="hero-bg-glow hero-bg-glow-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-text fade-up">
+        <span class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Desktop app · Windows &amp; Linux · 100% local
+        </span>
+        <h1>
+          A <span class="gradient-text">gallery-dl GUI</span> — and a library for everything it downloads.
+        </h1>
+        <p class="hero-description">
+          You already use <strong>gallery-dl</strong> from the terminal. Delle Model gives it a graphical
+          interface — and, unlike a plain download queue, it then turns the result into a real library:
+          <strong>one profile per creator</strong>, with a built-in viewer, dedup and metadata backfill.
+          100% local. No account.
+        </p>
+        <div class="hero-buttons">
+          <a href="/#download" class="btn-glass btn-primary btn-lg"><i class="fas fa-download"></i> Download free</a>
+          <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-discord btn-lg"><i class="fab fa-discord"></i> Get a free beta key</a>
+        </div>
+        <p class="hero-meta">
+          <i class="fab fa-windows"></i> Windows ·
+          <i class="fab fa-linux"></i> Linux ·
+          <i class="fab fa-apple"></i> macOS soon
+        </p>
+      </div>
+
+      <div class="hero-visual-wrap fade-up delay-2">
+        <div class="hero-visual liquid-glass" id="hero-visual">
+          <img class="zoomable" src="assets/main-white.png" alt="Delle Model — a gallery-dl GUI showing a creator profile with all their downloaded videos and images" width="1910" height="1071" fetchpriority="high" decoding="async" title="Click to enlarge" />
+          <span class="hero-visual-zoom" aria-hidden="true"><i class="fas fa-magnifying-glass-plus"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What a gallery-dl GUI usually is vs Delle ── -->
+  <section class="section">
+    <h2 class="section-title fade-up">A download queue is <span class="gradient-text">only half</span> the job</h2>
+    <p class="section-subtitle fade-up delay-1">Most gallery-dl GUIs stop the moment a file is saved. Delle owns the part that comes after.</p>
+
+    <div class="features-grid">
+      <div class="feature-card liquid-glass fade-up">
+        <div class="feature-icon" style="--icon-color:#8B5CF6"><i class="fas fa-terminal"></i></div>
+        <h3 class="feature-title">Run gallery-dl, no command line</h3>
+        <p class="feature-desc">Paste a URL and download — Delle drives gallery-dl for you, into the right creator's folder. No config files, no terminal.</p>
+      </div>
+      <div class="feature-card liquid-glass fade-up delay-1">
+        <div class="feature-icon" style="--icon-color:#3B82F6"><i class="fas fa-folder-tree"></i></div>
+        <h3 class="feature-title">Auto-organized by creator</h3>
+        <p class="feature-desc">After download, subfolders auto-detect as creators. Each one becomes a profile holding all their videos and images — no manual sorting.</p>
+      </div>
+      <div class="feature-card liquid-glass fade-up delay-2">
+        <div class="feature-icon" style="--icon-color:#EC4899"><i class="fas fa-arrows-rotate"></i></div>
+        <h3 class="feature-title">Metadata backfill</h3>
+        <p class="feature-desc">Delle reads gallery-dl's sidecar JSON and recovers post dates, descriptions and tags — even onto files you downloaded months ago.</p>
+      </div>
+      <div class="feature-card liquid-glass fade-up delay-3">
+        <div class="feature-icon" style="--icon-color:#06B6D4"><i class="fas fa-fingerprint"></i></div>
+        <h3 class="feature-title">Dedup re-downloads</h3>
+        <p class="feature-desc">Exact (SHA-256) + perceptual (dHash) hashing finds duplicates and near-duplicates from re-downloads and quality variants, automatically on sync.</p>
+      </div>
+      <div class="feature-card liquid-glass fade-up delay-4">
+        <div class="feature-icon" style="--icon-color:#F97316"><i class="fas fa-play"></i></div>
+        <h3 class="feature-title">Browse &amp; view</h3>
+        <p class="feature-desc">A built-in viewer, swipe mode and per-creator feed — so your downloads have context instead of being raw folders you never open.</p>
+      </div>
+      <div class="feature-card liquid-glass fade-up delay-5">
+        <div class="feature-icon" style="--icon-color:#10B981"><i class="fas fa-house-lock"></i></div>
+        <h3 class="feature-title">100% local</h3>
+        <p class="feature-desc">No cloud, no account, no telemetry. Your library is a portable file you can export in one click and restore on any machine.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Comparison ── -->
+  <section class="section">
+    <h2 class="section-title fade-up">Delle vs a <span class="gradient-text">typical gallery-dl GUI</span></h2>
+    <p class="section-subtitle fade-up delay-1">Most gallery-dl/yt-dlp front-ends are download-only. Here's the honest difference.</p>
+
+    <div class="comparison-table liquid-glass fade-up delay-2">
+      <table>
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Typical gallery-dl GUI</th>
+            <th class="highlight">Delle Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Run gallery-dl without the CLI</td><td>Yes</td><td class="highlight">Yes</td></tr>
+          <tr><td>Also drives yt-dlp</td><td>Sometimes</td><td class="highlight">Yes</td></tr>
+          <tr><td>Organize downloads by creator</td><td>No</td><td class="highlight">Yes — auto profiles</td></tr>
+          <tr><td>Built-in viewer + swipe mode</td><td>No</td><td class="highlight">Yes</td></tr>
+          <tr><td>Metadata backfill from sidecars</td><td>No</td><td class="highlight">Yes</td></tr>
+          <tr><td>Duplicate finder (exact + perceptual)</td><td>No</td><td class="highlight">Yes</td></tr>
+          <tr><td>Activity timeline</td><td>No</td><td class="highlight">When media has dates</td></tr>
+          <tr><td>100% local · no account</td><td>Varies</td><td class="highlight">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section id="download" class="support-section">
+    <div class="support-content liquid-glass fade-up">
+      <div class="support-glow"></div>
+      <h2>Give gallery-dl a <span class="gradient-text">home</span>.</h2>
+      <p>Free closed beta for Windows &amp; Linux (macOS soon). Download the app, or grab a free beta key on Discord.</p>
+      <div class="support-buttons">
+        <a href="/#download" class="btn-glass btn-primary btn-lg"><i class="fas fa-download"></i> Download free</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-lg btn-discord"><i class="fab fa-discord"></i> Get a beta key</a>
+        <a href="/faq.html" class="btn-glass btn-lg btn-ghost"><i class="fas fa-circle-question"></i> Read FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-text">© 2026 Delle Model. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener">Discord</a>
+        <a href="https://github.com/Delle-orga/Delle-Model-release/releases" target="_blank" rel="noreferrer noopener">Releases</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Lightbox ── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img class="lightbox-img" id="lightbox-img" alt="" draggable="false" />
+    <div class="lightbox-hint">Scroll to zoom · drag to pan · Esc to close</div>
+  </div>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Fade-up
+      var fadeEls = document.querySelectorAll('.fade-up');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('fade-up-visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        fadeEls.forEach(function (el) { io.observe(el); });
+      } else { fadeEls.forEach(function (el) { el.classList.add('fade-up-visible'); }); }
+
+      // Navbar scroll
+      var navbar = document.getElementById('navbar');
+      var onScroll = function () { navbar.classList.toggle('navbar-scrolled', window.scrollY > 16); };
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+      // Theme toggle
+      function applyTheme(isLight) {
+        document.documentElement.classList.toggle('light', isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        var meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.content = isLight ? '#E8E8E9' : '#141317';
+        var icon = document.getElementById('theme-icon'); if (icon) icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+      }
+      var themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) { applyTheme(document.documentElement.classList.contains('light')); themeBtn.addEventListener('click', function () { applyTheme(!document.documentElement.classList.contains('light')); }); }
+
+      // Mobile menu
+      var mToggle = document.getElementById('mobile-toggle'), overlay = document.getElementById('mobile-overlay'), menu = document.getElementById('mobile-menu');
+      if (mToggle && overlay && menu) {
+        var mIcon = mToggle.querySelector('i');
+        var closeMenu = function () { overlay.classList.remove('open'); menu.classList.remove('open'); mToggle.setAttribute('aria-expanded', 'false'); mIcon.className = 'fas fa-bars'; };
+        mToggle.addEventListener('click', function (e) { e.stopPropagation(); if (menu.classList.contains('open')) closeMenu(); else { overlay.classList.add('open'); menu.classList.add('open'); mToggle.setAttribute('aria-expanded', 'true'); mIcon.className = 'fas fa-times'; } });
+        overlay.addEventListener('click', closeMenu);
+        menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+      }
+
+      // Lightbox
+      var lb = document.getElementById('lightbox'), lbImg = document.getElementById('lightbox-img');
+      if (lb && lbImg) {
+        var scale = 1, tx = 0, ty = 0, dragging = false, moved = false, lastX = 0, lastY = 0;
+        var apply = function () { lbImg.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')'; lbImg.style.cursor = scale > 1 ? 'grab' : 'zoom-in'; };
+        var resetView = function () { scale = 1; tx = 0; ty = 0; apply(); };
+        var openLb = function (src, alt) { lbImg.src = src; lbImg.alt = alt || ''; resetView(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+        var closeLb = function () { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; lbImg.src = ''; };
+        document.querySelectorAll('.zoomable').forEach(function (im) { im.addEventListener('click', function () { openLb(im.currentSrc || im.src, im.alt); }); });
+        document.getElementById('lightbox-close').addEventListener('click', closeLb);
+        lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+        lbImg.addEventListener('wheel', function (e) { e.preventDefault(); var f = e.deltaY < 0 ? 1.15 : 1 / 1.15; scale = Math.min(5, Math.max(1, scale * f)); if (scale === 1) { tx = 0; ty = 0; } apply(); }, { passive: false });
+        lbImg.addEventListener('pointerdown', function (e) { if (scale <= 1) return; dragging = true; moved = false; lastX = e.clientX; lastY = e.clientY; lbImg.style.transition = 'none'; lbImg.style.cursor = 'grabbing'; try { lbImg.setPointerCapture(e.pointerId); } catch (err) {} });
+        lbImg.addEventListener('pointermove', function (e) { if (!dragging) return; var dx = e.clientX - lastX, dy = e.clientY - lastY; if (Math.abs(dx) + Math.abs(dy) > 3) moved = true; tx += dx; ty += dy; lastX = e.clientX; lastY = e.clientY; apply(); });
+        lbImg.addEventListener('pointerup', function () { dragging = false; lbImg.style.transition = ''; lbImg.style.cursor = scale > 1 ? 'grab' : 'zoom-in'; });
+        lbImg.addEventListener('click', function () { if (moved) { moved = false; return; } if (scale > 1) resetView(); else { scale = 2.5; apply(); } });
+      }
+    })();
+  </script>
+</body>
+</html>
