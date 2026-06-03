@@ -5,29 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#141317" />
 
-  <title>Delle Model — Desktop content manager for creator-economy archives</title>
-  <meta name="description" content="Per-creator timeline with activity histogram. Hash dedup. Metadata backfill via gallery-dl + yt-dlp. 100% local desktop app." />
+  <title>Delle Model — Organize and browse your creator media library</title>
+  <meta name="description" content="Organize and browse your media as a library of creators — one profile per creator with their videos, images, tags and favorites. Hash dedup, metadata backfill. 100% local desktop app." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://web-production-edab3.up.railway.app/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Delle Model — Desktop content manager for creator archives" />
-  <meta property="og:description" content="Per-creator timeline. Hash dedup. Metadata backfill. 100% local." />
+  <meta property="og:title" content="Delle Model — Organize and browse your creator media library" />
+  <meta property="og:description" content="Organize and browse your media as a library of creators. 100% local." />
   <meta property="og:url" content="https://web-production-edab3.up.railway.app/" />
   <meta property="og:image" content="https://web-production-edab3.up.railway.app/assets/main.png" />
   <meta property="og:image:width" content="1920" />
   <meta property="og:image:height" content="1080" />
-  <meta property="og:image:alt" content="Delle Model — per-creator timeline with activity histogram, hash dedup, metadata backfill" />
+  <meta property="og:image:alt" content="Delle Model — a creator profile with their videos, images, tags and favorites" />
   <meta property="og:site_name" content="Delle Model" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Delle Model" />
-  <meta name="twitter:description" content="Desktop content manager for creator-economy archives. 100% local." />
+  <meta name="twitter:description" content="Organize and browse your media as a library of creators. 100% local." />
   <meta name="twitter:image" content="https://web-production-edab3.up.railway.app/assets/main.png" />
-  <meta name="twitter:image:alt" content="Delle Model — per-creator timeline with activity histogram, hash dedup, metadata backfill" />
+  <meta name="twitter:image:alt" content="Delle Model — a creator profile with their videos, images, tags and favorites" />
   <meta name="twitter:site" content="@dellemodel" />
   <meta name="twitter:creator" content="@dellemodel" />
 
@@ -47,7 +47,7 @@
     "operatingSystem": "Windows, Linux",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "DesktopApplication",
-    "description": "Desktop content manager for creator-economy archives. Organizes media per creator with a timeline + activity histogram. Hash dedup, metadata backfill from gallery-dl and yt-dlp. 100% local SQLite, no cloud.",
+    "description": "Desktop app to organize and browse your media as a library of creators — one profile per creator with their videos, images, tags and favorites. Hash dedup, metadata backfill from gallery-dl and yt-dlp, and an activity timeline when your media has dates. 100% local and private, no cloud.",
     "url": "https://web-production-edab3.up.railway.app/",
     "downloadUrl": "https://github.com/Delle-orga/Delle-Model-release/releases/latest",
     "image": "https://web-production-edab3.up.railway.app/assets/main.png",
@@ -71,12 +71,12 @@
       document.documentElement.classList.toggle('light', theme === 'light');
     })();
   </script>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
   <!-- ── Navbar ── -->
-  <nav class="navbar">
-    <div class="navbar-inner">
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner liquid-glass">
       <a href="/" class="navbar-logo">
         <span class="navbar-logo-icon"><i class="fas fa-cube"></i></span>
         <span>Delle Model</span>
@@ -88,11 +88,25 @@
         <a href="/faq.html">FAQ</a>
       </div>
       <div class="navbar-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
         <a href="#download" class="btn-glass btn-primary"><i class="fas fa-download"></i> Download</a>
       </div>
-      <button class="navbar-mobile-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <button class="navbar-mobile-btn" id="mobile-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
+
+  <!-- ── Mobile menu ── -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner liquid-glass">
+      <a href="#features"><i class="fas fa-bolt"></i> Features</a>
+      <a href="#how-it-works"><i class="fas fa-list-ol"></i> How it works</a>
+      <a href="/faq.html"><i class="fas fa-circle-question"></i> FAQ</a>
+      <a href="#download" class="mobile-menu-cta"><i class="fas fa-download"></i> Download</a>
+    </div>
+  </div>
 
   <!-- ── Hero ── -->
   <section class="hero">
@@ -101,31 +115,33 @@
 
     <div class="hero-content">
       <div class="hero-text fade-up">
+        <span class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Desktop app · 100% local · Closed beta
+        </span>
         <h1>
-          The desktop content manager for <span class="gradient-text">creator-economy archives</span>.
+          Organize, browse and enjoy your whole <span class="gradient-text">creator library</span>.
         </h1>
         <p class="hero-description">
-          Delle Model organizes your media <strong>per creator, by post date</strong>. Browse a chronological timeline,
-          dedup automatically by hash, recover post dates and tags from gallery-dl &amp; yt-dlp metadata.
-          100% local. No cloud.
+          Delle Model turns your folders into a browsable library — <strong>one profile per creator</strong>,
+          with all their videos, images, tags and favorites in one place. Hash dedup, metadata backfill from
+          gallery-dl &amp; yt-dlp, and an activity timeline when your media has dates. 100% local. No cloud.
         </p>
-
-        <div class="hero-tags">
-          <span class="hero-tag" style="--tag-color:#3B82F6">Collectors</span>
-          <span class="hero-tag" style="--tag-color:#8B5CF6">Content Creators</span>
-          <span class="hero-tag" style="--tag-color:#EC4899">Curators</span>
-          <span class="hero-tag" style="--tag-color:#F97316">Organizers</span>
-          <span class="hero-tag" style="--tag-color:#10B981">Archivists</span>
-          <span class="hero-tag" style="--tag-color:#06B6D4">Photographers</span>
-          <span class="hero-tag" style="--tag-color:#EAB308">Videographers</span>
-          <span class="hero-tag" style="--tag-color:#EF4444">Models</span>
-          <span class="hero-tag" style="--tag-color:#6366F1">Media Managers</span>
-        </div>
 
         <div class="hero-buttons">
           <a href="#download" class="btn-glass btn-primary btn-lg">
-            <i class="fas fa-download"></i> Download
+            <i class="fas fa-download"></i> Download free
           </a>
+          <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-discord btn-lg">
+            <i class="fab fa-discord"></i> Get a free beta key
+          </a>
+        </div>
+        <a href="#how-it-works" class="hero-text-link"><i class="fas fa-play"></i> See how it works</a>
+
+        <div class="hero-trust">
+          <span><i class="fas fa-house-lock"></i> No cloud</span>
+          <span><i class="fas fa-eye-slash"></i> No tracking</span>
+          <span><i class="fas fa-user-slash"></i> No account</span>
         </div>
 
         <p class="hero-meta">
@@ -135,20 +151,39 @@
         </p>
       </div>
 
-      <div class="hero-visual liquid-glass fade-up delay-2">
-        <img src="assets/main.png" alt="Delle Model main interface — Timeline view with per-creator activity histogram, hash dedup, and metadata backfill from gallery-dl + yt-dlp sidecars" width="1920" height="1080" fetchpriority="high" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-        <div class="hero-visual-placeholder" style="display:none;">
-          <i class="fas fa-image"></i>
-          <p>Drop hero screenshot at <code>assets/main.png</code></p>
+      <div class="hero-visual-wrap fade-up delay-2">
+        <div class="hero-visual liquid-glass" id="hero-visual">
+          <img class="zoomable" src="assets/main.png" alt="Delle Model main interface — Timeline view with per-creator activity histogram, hash dedup, and metadata backfill from gallery-dl + yt-dlp sidecars" width="1920" height="1080" fetchpriority="high" decoding="async" title="Click to enlarge" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <span class="hero-visual-zoom" aria-hidden="true"><i class="fas fa-magnifying-glass-plus"></i></span>
+          <div class="hero-visual-placeholder" style="display:none;">
+            <i class="fas fa-image"></i>
+            <p>Drop hero screenshot at <code>assets/main.png</code></p>
+          </div>
         </div>
+        <span class="hero-chip hero-chip-1"><i class="fas fa-fingerprint"></i> Hash dedup</span>
+        <span class="hero-chip hero-chip-2"><i class="fas fa-cloud-arrow-down"></i> gallery-dl + yt-dlp</span>
+        <span class="hero-chip hero-chip-3"><i class="fas fa-stream"></i> Activity timeline</span>
+        <span class="hero-chip hero-chip-4"><i class="fas fa-arrows-up-down"></i> Swipe mode</span>
+        <span class="hero-chip hero-chip-5"><i class="fas fa-arrows-rotate"></i> Auto-sync</span>
       </div>
+    </div>
+  </section>
+
+  <!-- ── Trust strip ── -->
+  <section class="trust-strip" aria-label="What makes Delle Model trustworthy">
+    <div class="trust-strip-inner fade-up">
+      <div class="trust-pill"><i class="fas fa-house-laptop"></i> 100% local</div>
+      <div class="trust-pill"><i class="fas fa-lock"></i> Fully private</div>
+      <div class="trust-pill"><i class="fas fa-file-export"></i> One-click export</div>
+      <div class="trust-pill"><i class="fas fa-shield-halved"></i> Verified downloads</div>
+      <div class="trust-pill"><i class="fas fa-screwdriver-wrench"></i> Built with gallery-dl + yt-dlp</div>
     </div>
   </section>
 
   <!-- ── How it works ── -->
   <section id="how-it-works" class="section">
-    <h2 class="section-title fade-up">How it <span class="gradient-text">works</span></h2>
-    <p class="section-subtitle fade-up delay-1">Four steps from install to a fully organized archive.</p>
+    <h2 class="section-title fade-up">From folders to an <span class="gradient-text">organized library</span></h2>
+    <p class="section-subtitle fade-up delay-1">Four steps from install to a library you can actually browse.</p>
 
     <div class="steps-grid">
       <div class="step-card liquid-glass fade-up">
@@ -159,7 +194,7 @@
       <div class="step-card liquid-glass fade-up delay-1">
         <div class="step-number">2</div>
         <h3>Sync your library</h3>
-        <p>Hash-based indexing finds doubles, fingerprints media, and builds a portable SQLite database — all on your disk.</p>
+        <p>Hash-based indexing finds doubles, fingerprints media, and builds a portable library — all on your disk.</p>
       </div>
       <div class="step-card liquid-glass fade-up delay-2">
         <div class="step-number">3</div>
@@ -168,8 +203,8 @@
       </div>
       <div class="step-card liquid-glass fade-up delay-3">
         <div class="step-number">4</div>
-        <h3>Browse a real timeline</h3>
-        <p>Per-creator chronology with an interactive activity histogram. Click a year, drill to month, find anything in seconds.</p>
+        <h3>Browse &amp; enjoy</h3>
+        <p>Open any creator's profile — videos, images, favorites, tags. Powerful viewer, swipe mode, and an activity timeline when your media has dates.</p>
       </div>
     </div>
   </section>
@@ -181,68 +216,130 @@
 
     <div class="features-grid">
       <div class="feature-card liquid-glass fade-up">
-        <div class="feature-icon" style="--icon-color:#8B5CF6"><i class="fas fa-stream"></i></div>
-        <h3 class="feature-title">Timeline + activity histogram</h3>
-        <p class="feature-desc">Browse a creator's posts chronologically. Year-by-year area chart with drill-down to monthly. Click a bar, filter the feed. <em>No competitor has this.</em></p>
+        <div class="feature-icon" style="--icon-color:#3B82F6"><i class="fas fa-folder-tree"></i></div>
+        <h3 class="feature-title">A profile per creator</h3>
+        <p class="feature-desc">Every creator becomes a profile with all their videos and images in one place — tags, favorites, notes, links and feats. Subfolders auto-detect on sync, so your library organizes itself by the right person.</p>
       </div>
       <div class="feature-card liquid-glass fade-up delay-1">
-        <div class="feature-icon" style="--icon-color:#EC4899"><i class="fas fa-arrows-rotate"></i></div>
-        <h3 class="feature-title">Metadata backfill</h3>
-        <p class="feature-desc">Re-queries the original sources via gallery-dl + yt-dlp to recover post dates, descriptions, tags retroactively. Works even months after download.</p>
-      </div>
-      <div class="feature-card liquid-glass fade-up delay-2">
         <div class="feature-icon" style="--icon-color:#06B6D4"><i class="fas fa-fingerprint"></i></div>
         <h3 class="feature-title">Hash dedup</h3>
         <p class="feature-desc">Automatic exact (SHA-256) + perceptual (dHash) hashing on sync. Finds doubles across re-downloads, quality variants, and reposts.</p>
       </div>
+      <div class="feature-card liquid-glass fade-up delay-2">
+        <div class="feature-icon" style="--icon-color:#EC4899"><i class="fas fa-arrows-rotate"></i></div>
+        <h3 class="feature-title">Metadata backfill</h3>
+        <p class="feature-desc">Re-queries the original sources via gallery-dl + yt-dlp to recover post dates, descriptions, tags retroactively. Works even months after download.</p>
+      </div>
       <div class="feature-card liquid-glass fade-up delay-3">
-        <div class="feature-icon" style="--icon-color:#10B981"><i class="fas fa-house-lock"></i></div>
-        <h3 class="feature-title">100% local-first</h3>
-        <p class="feature-desc">SQLite on your disk. No cloud, no telemetry, no account required to use. Optional LAN access from devices on your home network.</p>
+        <div class="feature-icon" style="--icon-color:#8B5CF6"><i class="fas fa-stream"></i></div>
+        <h3 class="feature-title">Timeline + activity histogram</h3>
+        <p class="feature-desc">When your media has post dates, browse a creator chronologically — year-by-year histogram, drill-down to monthly, click a bar to filter the feed. <em>No competitor has this.</em></p>
       </div>
       <div class="feature-card liquid-glass fade-up delay-4">
-        <div class="feature-icon" style="--icon-color:#F97316"><i class="fas fa-box-archive"></i></div>
-        <h3 class="feature-title">Portable database</h3>
-        <p class="feature-desc">One-click JSON export of your entire library. Drop on another machine, restore in seconds. Move between Windows / macOS / Linux freely.</p>
+        <div class="feature-icon" style="--icon-color:#10B981"><i class="fas fa-house-lock"></i></div>
+        <h3 class="feature-title">Local-first &amp; portable</h3>
+        <p class="feature-desc">Your whole library is a single portable file. No cloud, no tracking, no account. One-click export, restore on any machine — Windows / macOS / Linux.</p>
       </div>
       <div class="feature-card liquid-glass fade-up delay-5">
-        <div class="feature-icon" style="--icon-color:#EAB308"><i class="fas fa-layer-group"></i></div>
-        <h3 class="feature-title">Multi-source unified</h3>
-        <p class="feature-desc">gallery-dl, yt-dlp, manual imports — all show up in one library. Source URL preserved per item, one click back to the original post.</p>
+        <div class="feature-icon" style="--icon-color:#F97316"><i class="fas fa-bolt"></i></div>
+        <h3 class="feature-title">Built for bulk</h3>
+        <p class="feature-desc">Multi-select across pages: mass-tag, mass-move, mass-recycle. Soft-delete recycle bin with one-click restore. Opt-in LAN access from your phone.</p>
       </div>
     </div>
   </section>
 
-  <!-- ── What's inside (replaces the old comparison section) ── -->
-  <section id="whats-inside" class="section">
-    <h2 class="section-title fade-up">What's <span class="gradient-text">inside</span></h2>
-    <p class="section-subtitle fade-up delay-1">A self-contained desktop app. No cloud, no account dependencies for the core work.</p>
+  <!-- ── See it in action — feature screenshots ──
+       Scalable pattern: each screenshot is one <article class="feature-row">.
+       Sides alternate automatically via :nth-child. To add the next one, drop the
+       PNG in assets/ and copy an <article> below, changing: img (src/alt/width/height),
+       --row-accent, the copy, and optional figure flags (is-light for light shots,
+       is-tall for portrait). Images use class="zoomable" → click-to-enlarge for free. -->
+  <section id="screenshots" class="section feature-rows-section">
+    <h2 class="section-title fade-up">See it in <span class="gradient-text">action</span></h2>
+    <p class="section-subtitle fade-up delay-1">A closer look at the features that make your library easy to live in.</p>
 
-    <div class="features-grid">
-      <div class="feature-card liquid-glass fade-up">
-        <div class="feature-icon" style="--icon-color:#3B82F6"><i class="fas fa-folder-tree"></i></div>
-        <h3 class="feature-title">Per-creator workspace</h3>
-        <p class="feature-desc">Each creator gets a profile, a folder, and a timeline. Subfolders auto-detect on sync. Tags, favorites, links, notes — all scoped to the right entity.</p>
+    <div class="feature-rows">
+
+      <article class="feature-row fade-up" style="--row-accent: var(--color-orange)">
+        <figure class="feature-row-media liquid-glass is-light">
+          <img class="zoomable"
+               src="assets/Statistics-screenshot.png"
+               alt="Delle Model Statistics dashboard — 179 models, 32,228 videos, 127,664 images, 421 favorites, 9 playlists and 95d 15h total video runtime, with a Most Viewed Videos list and a Most Used Tags bar chart"
+               width="1915" height="1075"
+               loading="lazy" decoding="async" title="Click to enlarge"
+               onerror="this.closest('.feature-row-media').classList.add('is-err')" />
+          <div class="feature-row-fallback" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <p><code>assets/Statistics-screenshot.png</code></p>
+          </div>
+          <span class="hero-visual-zoom feature-row-zoom" aria-hidden="true"><i class="fas fa-magnifying-glass-plus"></i></span>
+        </figure>
+        <div class="feature-row-text">
+          <span class="feature-row-tag"><i class="fas fa-chart-pie"></i> Statistics</span>
+          <h3>Understand your whole library <span class="gradient-text">at a glance</span></h3>
+          <p>A built-in dashboard adds up everything you have — models, videos, images, favorites and playlists — plus your total video runtime. See your most-viewed videos and most-used tags side by side, so you always know what's in your library and what you actually reach for.</p>
+          <ul class="feature-row-points">
+            <li><i class="fas fa-circle-check"></i> Totals across your entire collection</li>
+            <li><i class="fas fa-circle-check"></i> Most-viewed videos, ranked</li>
+            <li><i class="fas fa-circle-check"></i> Most-used tags as a live bar chart</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- ROW 2, 3, … — paste a copy of the <article> above here. Sides alternate automatically. -->
+
+    </div>
+  </section>
+
+  <!-- ── Bonus: the timeline (only meaningful when media carries dates) ── -->
+  <section id="showcase" class="section showcase-section">
+    <div class="showcase-grid">
+      <div class="showcase-text fade-up">
+        <span class="eyebrow-tag"><i class="fas fa-stream"></i> Bonus when you have dates</span>
+        <h2>Dated media? You also get a <span class="gradient-text">timeline</span>.</h2>
+        <p>
+          When your media carries post dates — recovered automatically from the original sources — every
+          creator also gets an interactive activity histogram. Spot the busy years, the quiet stretches,
+          the comebacks. Click a year to drill into months, click a bar to filter the feed.
+        </p>
+        <ul class="showcase-points">
+          <li><i class="fas fa-circle-check"></i> Year-by-year, drill down to monthly</li>
+          <li><i class="fas fa-circle-check"></i> Click a bar to filter the feed instantly</li>
+          <li><i class="fas fa-circle-check"></i> Built from real post dates, not file timestamps</li>
+        </ul>
+        <p class="showcase-note"><i class="fas fa-star"></i> No other content manager does this.</p>
       </div>
-      <div class="feature-card liquid-glass fade-up delay-1">
-        <div class="feature-icon" style="--icon-color:#8B5CF6"><i class="fas fa-database"></i></div>
-        <h3 class="feature-title">SQLite database, portable</h3>
-        <p class="feature-desc">Your library lives in a single SQLite file. Export to JSON, restore on any machine. Move across Windows / macOS / Linux without losing a single tag.</p>
-      </div>
-      <div class="feature-card liquid-glass fade-up delay-2">
-        <div class="feature-icon" style="--icon-color:#EC4899"><i class="fas fa-recycle"></i></div>
-        <h3 class="feature-title">Recycle bin + soft delete</h3>
-        <p class="feature-desc">Clean up aggressively. Items move to the recycle bin first, restore in one click. Permanent delete only when you decide.</p>
-      </div>
-      <div class="feature-card liquid-glass fade-up delay-3">
-        <div class="feature-icon" style="--icon-color:#F97316"><i class="fas fa-bolt"></i></div>
-        <h3 class="feature-title">Bulk operations</h3>
-        <p class="feature-desc">Multi-select across pages, mass-tag, mass-move, mass-recycle. Touch hundreds of items in seconds instead of one by one.</p>
-      </div>
-      <div class="feature-card liquid-glass fade-up delay-4">
-        <div class="feature-icon" style="--icon-color:#10B981"><i class="fas fa-wifi"></i></div>
-        <h3 class="feature-title">LAN access, opt-in</h3>
-        <p class="feature-desc">Browse your library from your phone or tablet on the same network. Same UI, no extra install. Off by default — turn on when you want it.</p>
+
+      <div class="showcase-demo liquid-glass fade-up delay-1" id="chart-demo">
+        <div class="chart-head">
+          <div class="chart-creator">
+            <span class="chart-avatar">LG</span>
+            <div>
+              <div class="chart-name">Lala Glam</div>
+              <div class="chart-sub">Activity histogram</div>
+            </div>
+          </div>
+          <div class="chart-stats">
+            <div class="chart-stat"><span class="chart-stat-num" data-stat="posts">0</span><span class="chart-stat-label">posts</span></div>
+            <div class="chart-stat"><span class="chart-stat-num" data-stat="months">0</span><span class="chart-stat-label">active mo.</span></div>
+          </div>
+        </div>
+
+        <div class="chart-years" id="chart-years" role="tablist" aria-label="Select year">
+          <button class="chart-year" data-year="2021" role="tab">2021</button>
+          <button class="chart-year" data-year="2022" role="tab">2022</button>
+          <button class="chart-year" data-year="2023" role="tab">2023</button>
+          <button class="chart-year is-active" data-year="2024" role="tab" aria-selected="true">2024</button>
+          <button class="chart-year" data-year="2025" role="tab">2025</button>
+        </div>
+
+        <div class="chart-plot" id="chart-plot" aria-hidden="true">
+          <!-- 12 month bars injected by JS -->
+        </div>
+        <div class="chart-axis">
+          <span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span>
+        </div>
+        <div class="chart-tooltip" id="chart-tooltip"></div>
       </div>
     </div>
   </section>
@@ -255,22 +352,33 @@
        need to change per release. -->
   <section id="download" class="section download-section">
     <h2 class="section-title fade-up">Available on every <span class="gradient-text">desktop</span></h2>
-    <p class="section-subtitle fade-up delay-1">Windows, macOS, Linux.</p>
+    <p class="section-subtitle fade-up delay-1">Windows, macOS, Linux. Free during the closed beta.</p>
+
+    <div class="beta-callout liquid-glass fade-up delay-1">
+      <div class="beta-callout-icon"><i class="fab fa-discord"></i></div>
+      <div class="beta-callout-text">
+        <h3>Grab your free beta key first</h3>
+        <p>Delle Model is invite-only for now. Join the Discord to get a free beta key in a minute — it's also where new builds, support, and what's next are posted. <strong>Highly recommended.</strong></p>
+      </div>
+      <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg beta-callout-cta"><i class="fab fa-discord"></i> Get a free beta key</a>
+    </div>
 
     <div class="download-grid fade-up delay-2">
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe" class="dl-card liquid-glass">
+      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe" class="dl-card liquid-glass" data-os="windows">
+        <span class="dl-badge">Recommended for you</span>
         <div class="dl-os-icon"><i class="fab fa-windows"></i></div>
         <div class="dl-os">Windows</div>
         <div class="dl-format">10 / 11 · .exe installer</div>
         <div class="dl-action"><i class="fas fa-download"></i> Download</div>
       </a>
-      <div class="dl-card liquid-glass dl-card-disabled" aria-disabled="true">
+      <div class="dl-card liquid-glass dl-card-disabled" aria-disabled="true" data-os="mac">
         <div class="dl-os-icon"><i class="fab fa-apple"></i></div>
         <div class="dl-os">macOS</div>
         <div class="dl-format">Coming soon — build locally for now</div>
         <div class="dl-action dl-action-muted">Soon</div>
       </div>
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage" class="dl-card liquid-glass">
+      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage" class="dl-card liquid-glass" data-os="linux">
+        <span class="dl-badge">Recommended for you</span>
         <div class="dl-os-icon"><i class="fab fa-linux"></i></div>
         <div class="dl-os">Linux</div>
         <div class="dl-format">.AppImage · x86_64</div>
@@ -278,19 +386,21 @@
       </a>
     </div>
     <p class="download-meta fade-up delay-3">
-      SHA-256 checksums on every release.
+      Every release is checksum-verified.
       <a href="https://github.com/Delle-orga/Delle-Model-release/releases" target="_blank" rel="noreferrer noopener">All releases &amp; changelog →</a>
     </p>
   </section>
 
-  <!-- ── Support ── -->
+  <!-- ── Final CTA + support ── -->
   <section id="support" class="support-section">
     <div class="support-content liquid-glass fade-up">
-      <h2>Need <span class="gradient-text">help</span>?</h2>
-      <p>Closed beta — support and bug reports happen in the Discord. General questions in the FAQ.</p>
+      <div class="support-glow"></div>
+      <h2>Get your archive <span class="gradient-text">in order</span>.</h2>
+      <p>Free closed beta. Join the Discord to grab your beta key — that's also where support, bug reports, and what's coming next all live.</p>
       <div class="support-buttons">
-        <a href="/faq.html" class="btn-glass btn-ghost"><i class="fas fa-circle-question"></i> Read FAQ</a>
-        <a href="https://discord.gg/PCryCjDkJc" target="_blank" rel="noreferrer noopener" class="btn-glass btn-ghost"><i class="fab fa-discord"></i> Join Discord</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg"><i class="fab fa-discord"></i> Join Discord &amp; get a key</a>
+        <a href="#download" class="btn-glass btn-lg btn-ghost"><i class="fas fa-download"></i> Download</a>
+        <a href="/faq.html" class="btn-glass btn-lg btn-ghost"><i class="fas fa-circle-question"></i> Read FAQ</a>
       </div>
     </div>
   </section>
@@ -301,23 +411,289 @@
       <span class="footer-text">© 2026 Delle Model. All rights reserved.</span>
       <div class="footer-links">
         <a href="/faq.html">FAQ</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener">Discord</a>
         <a href="https://github.com/Delle-orga/Delle-Model-release/releases" target="_blank" rel="noreferrer noopener">Releases</a>
       </div>
     </div>
   </footer>
 
+  <!-- ── Lightbox (click any .zoomable image to enlarge) ── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img class="lightbox-img" id="lightbox-img" alt="" draggable="false" />
+    <div class="lightbox-hint">Scroll to zoom · drag to pan · Esc to close</div>
+  </div>
+
   <script>
-    // Fade-up animation on scroll
-    const fadeEls = document.querySelectorAll('.fade-up');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('fade-up-visible');
-          io.unobserve(e.target);
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ── Fade-up on scroll ── */
+      var fadeEls = document.querySelectorAll('.fade-up');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('fade-up-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        fadeEls.forEach(function (el) { io.observe(el); });
+      } else {
+        fadeEls.forEach(function (el) { el.classList.add('fade-up-visible'); });
+      }
+
+      /* ── Navbar solidify on scroll ── */
+      var navbar = document.getElementById('navbar');
+      var onScroll = function () {
+        if (window.scrollY > 16) navbar.classList.add('navbar-scrolled');
+        else navbar.classList.remove('navbar-scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ── Theme toggle ── */
+      function applyTheme(isLight) {
+        document.documentElement.classList.toggle('light', isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.content = isLight ? '#E8E8E9' : '#141317';
+        var icon = document.getElementById('theme-icon');
+        if (icon) icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+      }
+      var themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        applyTheme(document.documentElement.classList.contains('light'));
+        themeBtn.addEventListener('click', function () {
+          applyTheme(!document.documentElement.classList.contains('light'));
+        });
+      }
+
+      /* ── Mobile menu ── */
+      var mToggle = document.getElementById('mobile-toggle');
+      var overlay = document.getElementById('mobile-overlay');
+      var menu = document.getElementById('mobile-menu');
+      if (mToggle && overlay && menu) {
+        var mIcon = mToggle.querySelector('i');
+        var closeMenu = function () {
+          overlay.classList.remove('open');
+          menu.classList.remove('open');
+          mToggle.setAttribute('aria-expanded', 'false');
+          mIcon.className = 'fas fa-bars';
+        };
+        mToggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (menu.classList.contains('open')) { closeMenu(); }
+          else {
+            overlay.classList.add('open');
+            menu.classList.add('open');
+            mToggle.setAttribute('aria-expanded', 'true');
+            mIcon.className = 'fas fa-times';
+          }
+        });
+        overlay.addEventListener('click', closeMenu);
+        menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+      }
+
+      /* ── Hero visual pointer parallax ── */
+      var hv = document.getElementById('hero-visual');
+      if (hv && !reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+        var rAF;
+        hv.addEventListener('mousemove', function (e) {
+          if (rAF) cancelAnimationFrame(rAF);
+          rAF = requestAnimationFrame(function () {
+            var r = hv.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width - 0.5;
+            var py = (e.clientY - r.top) / r.height - 0.5;
+            hv.style.transform = 'perspective(1000px) rotateY(' + (px * 6) + 'deg) rotateX(' + (-py * 6) + 'deg)';
+          });
+        });
+        hv.addEventListener('mouseleave', function () {
+          hv.style.transform = '';
+        });
+      }
+
+      /* ── Interactive activity histogram ── */
+      var DATA = {
+        '2021': [3, 8, 12, 22, 31, 28, 40, 55, 48, 60, 44, 70],
+        '2022': [50, 62, 45, 78, 90, 72, 65, 84, 96, 70, 58, 88],
+        '2023': [40, 30, 55, 48, 62, 80, 95, 88, 72, 66, 90, 100],
+        '2024': [70, 85, 60, 92, 78, 100, 88, 95, 74, 82, 68, 90],
+        '2025': [88, 72, 95, 60, 80, 45, 30, 20, 0, 0, 0, 0]
+      };
+      var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      // Per-month "posts" scaling factor so tooltip/stat numbers feel real.
+      var SCALE = 2.4;
+
+      var plot = document.getElementById('chart-plot');
+      var tooltip = document.getElementById('chart-tooltip');
+      var yearBtns = document.querySelectorAll('.chart-year');
+      var bars = [];
+      var chartReady = false;
+      var currentYear = '2024';
+
+      if (plot) {
+        for (var i = 0; i < 12; i++) {
+          var bar = document.createElement('div');
+          bar.className = 'chart-bar';
+          var fill = document.createElement('div');
+          fill.className = 'chart-bar-fill';
+          bar.appendChild(fill);
+          (function (idx, barEl) {
+            barEl.addEventListener('mouseenter', function () { showTip(idx, barEl); });
+            barEl.addEventListener('mouseleave', hideTip);
+          })(i, bar);
+          plot.appendChild(bar);
+          bars.push(fill);
         }
+      }
+
+      function animateCount(el, to) {
+        if (reduceMotion) { el.textContent = to.toLocaleString(); return; }
+        var from = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
+        var start = null, dur = 600;
+        function step(ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(from + (to - from) * eased).toLocaleString();
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      function renderYear(year) {
+        currentYear = year;
+        var d = DATA[year];
+        var total = 0, active = 0;
+        for (var i = 0; i < bars.length; i++) {
+          var v = d[i] || 0;
+          bars[i].style.height = (chartReady ? v : 0) + '%';
+          bars[i].parentElement.classList.toggle('is-empty', v === 0);
+          total += Math.round(v * SCALE);
+          if (v > 0) active++;
+        }
+        var posts = document.querySelector('[data-stat="posts"]');
+        var months = document.querySelector('[data-stat="months"]');
+        if (posts) animateCount(posts, total);
+        if (months) animateCount(months, active);
+      }
+
+      function showTip(idx, barEl) {
+        if (!tooltip) return;
+        var v = DATA[currentYear][idx] || 0;
+        if (v === 0) { hideTip(); return; }
+        tooltip.innerHTML = '<strong>' + MONTHS[idx] + ' ' + currentYear + '</strong>' + Math.round(v * SCALE) + ' posts';
+        tooltip.classList.add('show');
+        var pr = plot.getBoundingClientRect();
+        var br = barEl.getBoundingClientRect();
+        tooltip.style.left = (br.left - pr.left + br.width / 2) + 'px';
+        tooltip.style.top = (br.top - pr.top) + 'px';
+      }
+      function hideTip() { if (tooltip) tooltip.classList.remove('show'); }
+
+      yearBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          yearBtns.forEach(function (b) { b.classList.remove('is-active'); b.removeAttribute('aria-selected'); });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+          hideTip();
+          renderYear(btn.dataset.year);
+        });
       });
-    }, { threshold: 0.1 });
-    fadeEls.forEach((el) => io.observe(el));
+
+      // Kick off the bar grow + count-up when the chart scrolls into view.
+      var demo = document.getElementById('chart-demo');
+      if (demo && 'IntersectionObserver' in window) {
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              chartReady = true;
+              renderYear(currentYear);
+              cio.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.3 });
+        cio.observe(demo);
+      } else {
+        chartReady = true;
+        renderYear(currentYear);
+      }
+
+      /* ── Highlight the visitor's OS on the download cards ── */
+      var plat = (navigator.userAgentData && navigator.userAgentData.platform || navigator.platform || navigator.userAgent || '').toLowerCase();
+      var detected = null;
+      if (plat.indexOf('win') !== -1) detected = 'windows';
+      else if (plat.indexOf('mac') !== -1 || plat.indexOf('iphone') !== -1 || plat.indexOf('ipad') !== -1) detected = 'mac';
+      else if (plat.indexOf('linux') !== -1 || plat.indexOf('android') !== -1) detected = 'linux';
+      if (detected) {
+        var card = document.querySelector('.dl-card[data-os="' + detected + '"]');
+        if (card) card.classList.add('dl-card-detected');
+      }
+
+      /* ── Lightbox: click any .zoomable image to view it large + zoom/pan ── */
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      if (lb && lbImg) {
+        var scale = 1, tx = 0, ty = 0, dragging = false, moved = false, lastX = 0, lastY = 0;
+        var apply = function () {
+          lbImg.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
+          lbImg.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+        };
+        var resetView = function () { scale = 1; tx = 0; ty = 0; apply(); };
+        var openLb = function (src, alt) {
+          lbImg.src = src; lbImg.alt = alt || '';
+          resetView();
+          lb.classList.add('open');
+          lb.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        };
+        var closeLb = function () {
+          lb.classList.remove('open');
+          lb.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          lbImg.src = '';
+        };
+        document.querySelectorAll('.zoomable').forEach(function (im) {
+          im.addEventListener('click', function () { openLb(im.currentSrc || im.src, im.alt); });
+        });
+        document.getElementById('lightbox-close').addEventListener('click', closeLb);
+        lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();
+        });
+        lbImg.addEventListener('wheel', function (e) {
+          e.preventDefault();
+          var f = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+          scale = Math.min(5, Math.max(1, scale * f));
+          if (scale === 1) { tx = 0; ty = 0; }
+          apply();
+        }, { passive: false });
+        lbImg.addEventListener('pointerdown', function (e) {
+          if (scale <= 1) return;
+          dragging = true; moved = false; lastX = e.clientX; lastY = e.clientY;
+          lbImg.style.transition = 'none';
+          lbImg.style.cursor = 'grabbing';
+          try { lbImg.setPointerCapture(e.pointerId); } catch (err) {}
+        });
+        lbImg.addEventListener('pointermove', function (e) {
+          if (!dragging) return;
+          var dx = e.clientX - lastX, dy = e.clientY - lastY;
+          if (Math.abs(dx) + Math.abs(dy) > 3) moved = true;
+          tx += dx; ty += dy; lastX = e.clientX; lastY = e.clientY;
+          apply();
+        });
+        lbImg.addEventListener('pointerup', function () {
+          dragging = false; lbImg.style.transition = '';
+          lbImg.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+        });
+        lbImg.addEventListener('click', function () {
+          if (moved) { moved = false; return; }
+          if (scale > 1) resetView(); else { scale = 2.5; apply(); }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
