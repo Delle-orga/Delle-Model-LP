@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" role="img" aria-label="Delle">
+  <!-- Delle app icon (light recipe): pale rounded body + the notched-D window filled
+       with violet refraction. Mirrors RECIPES.light in DelleRefraction.tsx:
+       family violet, hueRotate 62, saturate 1.0, seed 3, body #f4f2ec. -->
+  <defs><clipPath id="round-l"><rect width="100" height="100" rx="22.1"/></clipPath></defs>
+  <g clip-path="url(#round-l)">
+    <rect width="100" height="100" fill="#f4f2ec"/>
+    <svg x="19" y="19" width="62" height="62" viewBox="0 0 100 100" overflow="visible">
+      <defs>
+        <clipPath id="d-l"><path d="M 24 14 L 52 14 A 36 36 0 0 1 87.4 46 L 80 46 L 80 54 L 87.4 54 A 36 36 0 0 1 52 86 L 24 86 Z M 42 30 L 52 30 A 20 20 0 0 1 72 50 A 20 20 0 0 1 52 70 L 42 70 Z" fill-rule="evenodd"/></clipPath>
+        <filter id="f-l" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.020 0.030" numOctaves="3" seed="3" stitchTiles="stitch" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="1.25 0 0.65 0 0  0.25 0.35 0.55 0 0  0.55 0 1.45 0 0  0 0 0 0 1" result="col"/>
+          <feColorMatrix in="col" type="hueRotate" values="62" result="h"/>
+          <feColorMatrix in="h" type="saturate" values="1.0"/>
+        </filter>
+      </defs>
+      <g clip-path="url(#d-l)">
+        <rect width="100" height="100" filter="url(#f-l)"/>
+        <rect width="100" height="100" fill="rgba(255,255,255,0.05)"/>
+      </g>
+    </svg>
+  </g>
+</svg>
