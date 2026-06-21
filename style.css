@@ -216,6 +216,12 @@ ul { list-style: none; }
   color: #fff;
   font-size: 13px;
 }
+/* Brand app icon (the refraction D) — theme-adaptive: dark recipe by default,
+   light recipe when <html class="light"> (the LP defaults to light). */
+.navbar-logo-mark { width: 30px; height: 30px; display: block; flex: none; }
+.dl-logo-light { display: none; }
+html.light .dl-logo-dark { display: none; }
+html.light .dl-logo-light { display: block; }
 .navbar-links { display: flex; gap: 24px; }
 .navbar-links a { font-size: 14px; font-weight: 500; opacity: 0.75; transition: opacity 180ms; }
 .navbar-links a:hover { opacity: 1; }
