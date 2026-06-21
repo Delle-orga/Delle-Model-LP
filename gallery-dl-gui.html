@@ -248,6 +248,22 @@
       var onScroll = function () { navbar.classList.toggle('navbar-scrolled', window.scrollY > 16); };
       window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
+      // Direct-download CTAs: this is the #1 SEO page, so its Download buttons should
+      // download the visitor's OS installer in one click instead of bouncing to the
+      // index picker. Detect the OS and rewrite every "/#download" button to that
+      // installer (version-less releases/latest URLs auto-track the newest build).
+      // mac (no build yet) and unknown platforms keep the /#download picker fallback.
+      var plat = (navigator.userAgentData && navigator.userAgentData.platform || navigator.platform || navigator.userAgent || '').toLowerCase();
+      var os = plat.indexOf('win') !== -1 ? 'windows'
+             : (plat.indexOf('mac') !== -1 || plat.indexOf('iphone') !== -1 || plat.indexOf('ipad') !== -1) ? 'mac'
+             : (plat.indexOf('linux') !== -1 || plat.indexOf('android') !== -1) ? 'linux' : null;
+      var INSTALLER = {
+        windows: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe',
+        linux: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage'
+      };
+      var dl = os && INSTALLER[os];
+      if (dl) { document.querySelectorAll('a[href="/#download"]').forEach(function (a) { a.setAttribute('href', dl); }); }
+
       // Theme toggle
       function applyTheme(isLight) {
         document.documentElement.classList.toggle('light', isLight);
