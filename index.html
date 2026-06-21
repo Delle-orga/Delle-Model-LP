@@ -635,6 +635,29 @@
         if (card) card.classList.add('dl-card-detected');
       }
 
+      /* ── Make every generic "Download" CTA (navbar, mobile menu, final CTA) actually
+            download the detected OS's installer — same behaviour as the OS cards. mac
+            (no build yet) and unknown platforms fall back to scrolling to the #download
+            picker. URLs are version-less (releases/latest/download/…) so they auto-track
+            the newest release and never need per-release edits. ── */
+      var INSTALLER = {
+        windows: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe',
+        linux: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage'
+      };
+      var directUrl = detected && INSTALLER[detected];
+      if (directUrl) {
+        document.querySelectorAll('a[href="#download"]').forEach(function (a) {
+          a.setAttribute('href', directUrl);
+        });
+      }
+
+      /* Only the detected OS keeps the "Recommended for you" badge (it was hard-coded on
+         both the Windows AND Linux cards — at most one can be "for you"). */
+      document.querySelectorAll('.dl-badge').forEach(function (b) {
+        var c = b.closest('.dl-card');
+        if (!detected || !c || c.getAttribute('data-os') !== detected) b.style.display = 'none';
+      });
+
       /* ── Lightbox: click any .zoomable image to view it large + zoom/pan ── */
       var lb = document.getElementById('lightbox');
       var lbImg = document.getElementById('lightbox-img');
