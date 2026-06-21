@@ -1149,3 +1149,42 @@ html.light .hero-bg-glow-2 { opacity: 0.26; }
   .fade-up { opacity: 1; transform: none; }
   .hero-visual, .hero-chip, .hero-bg-glow-1, .hero-bg-glow-2, .hero-eyebrow-dot { animation: none; }
 }
+
+/* ── Comparison table (gallery-dl-gui) — "Delle vs a typical gallery-dl GUI" ─────
+   The .comparison-table container already carries the glass shell; this styles the
+   table itself. Capability column stays readable; the "typical GUI" column is
+   de-emphasized (the weaker option); the Delle column is a continuous green-tinted
+   "winner" column with a check before each answer. Text stays --c-content (green text
+   on a green tint fails contrast in light mode — the tint + check carry the meaning). */
+.comparison-table { padding: 6px; overflow-x: auto; }
+.comparison-table table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 15px; }
+.comparison-table th,
+.comparison-table td { padding: 14px 22px; text-align: left; vertical-align: middle; }
+.comparison-table thead th {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-content);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+.comparison-table tbody td {
+  border-top: 1px solid color-mix(in srgb, var(--c-content) 9%, transparent);
+  color: var(--c-content);
+}
+.comparison-table tbody td:first-child { font-weight: 600; }   /* capability */
+.comparison-table tbody td:nth-child(2) { opacity: 0.5; }       /* typical GUI = muted */
+.comparison-table tbody tr:hover td { background: color-mix(in srgb, var(--c-content) 4%, transparent); }
+
+/* Delle column — the winner. */
+.comparison-table .highlight { background: color-mix(in srgb, var(--color-green) 14%, transparent); font-weight: 600; }
+.comparison-table thead .highlight { opacity: 1; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.comparison-table tbody tr:last-child .highlight { border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+.comparison-table tbody tr:hover .highlight { background: color-mix(in srgb, var(--color-green) 20%, transparent); }
+.comparison-table tbody td.highlight::before {
+  content: "\2713";
+  color: var(--color-green);
+  font-weight: 700;
+  margin-right: 8px;
+}
