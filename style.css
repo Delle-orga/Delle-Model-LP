@@ -846,6 +846,15 @@ html.light .hero-bg-glow-2 { opacity: 0.26; }
 }
 .dl-os { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
 .dl-format { font-size: 13px; opacity: 0.65; }
+/* Small first-launch hint under the macOS card (ad-hoc signed, not notarized). */
+.dl-note {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.55;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 .download-meta {
   margin-top: 28px;
   font-size: 12px;
