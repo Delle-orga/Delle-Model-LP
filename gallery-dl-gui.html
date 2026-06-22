@@ -102,7 +102,7 @@
       <div class="hero-text fade-up">
         <span class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          Desktop app · Windows · macOS · Linux · 100% local
+          Desktop app · Windows &amp; Linux · 100% local
         </span>
         <h1>
           A <span class="gradient-text">gallery-dl GUI</span> — and a library for everything it downloads.
@@ -119,8 +119,8 @@
         </div>
         <p class="hero-meta">
           <i class="fab fa-windows"></i> Windows ·
-          <i class="fab fa-apple"></i> macOS ·
-          <i class="fab fa-linux"></i> Linux
+          <i class="fab fa-linux"></i> Linux ·
+          <i class="fab fa-apple"></i> macOS soon
         </p>
       </div>
 
@@ -205,7 +205,7 @@
     <div class="support-content liquid-glass fade-up">
       <div class="support-glow"></div>
       <h2>Give gallery-dl a <span class="gradient-text">home</span>.</h2>
-      <p>Free closed beta for Windows, macOS &amp; Linux. Download the app, or grab a free beta key on Discord.</p>
+      <p>Free closed beta for Windows &amp; Linux (macOS soon). Download the app, or grab a free beta key on Discord.</p>
       <div class="support-buttons">
         <a href="/#download" class="btn-glass btn-primary btn-lg"><i class="fas fa-download"></i> Download free</a>
         <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-lg btn-discord"><i class="fab fa-discord"></i> Get a beta key</a>
@@ -256,14 +256,13 @@
       // download the visitor's OS installer in one click instead of bouncing to the
       // index picker. Detect the OS and rewrite every "/#download" button to that
       // installer (version-less releases/latest URLs auto-track the newest build).
-      // macOS is Apple Silicon only (.dmg); unknown platforms keep the /#download fallback.
+      // mac (no build yet) and unknown platforms keep the /#download picker fallback.
       var plat = (navigator.userAgentData && navigator.userAgentData.platform || navigator.platform || navigator.userAgent || '').toLowerCase();
       var os = plat.indexOf('win') !== -1 ? 'windows'
              : (plat.indexOf('mac') !== -1 || plat.indexOf('iphone') !== -1 || plat.indexOf('ipad') !== -1) ? 'mac'
              : (plat.indexOf('linux') !== -1 || plat.indexOf('android') !== -1) ? 'linux' : null;
       var INSTALLER = {
         windows: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe',
-        mac: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.dmg',
         linux: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage'
       };
       var dl = os && INSTALLER[os];
