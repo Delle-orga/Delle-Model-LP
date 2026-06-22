@@ -46,7 +46,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Delle Model",
-    "operatingSystem": "Windows, macOS, Linux",
+    "operatingSystem": "Windows, Linux",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "DesktopApplication",
     "description": "Delle Model is a 100% local desktop app that turns everything you've downloaded — with gallery-dl, yt-dlp or by hand — into a private library, organized by creator and ready to browse and watch. No cloud, no account.",
@@ -374,13 +374,12 @@
         <div class="dl-format">10 / 11 · .exe installer</div>
         <div class="dl-action"><i class="fas fa-download"></i> Download</div>
       </a>
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.dmg" class="dl-card liquid-glass" data-os="mac">
-        <span class="dl-badge">Recommended for you</span>
+      <div class="dl-card liquid-glass dl-card-disabled" aria-disabled="true" data-os="mac">
         <div class="dl-os-icon"><i class="fab fa-apple"></i></div>
         <div class="dl-os">macOS</div>
-        <div class="dl-format">Apple Silicon · .dmg</div>
-        <div class="dl-action"><i class="fas fa-download"></i> Download</div>
-      </a>
+        <div class="dl-format">Coming soon — build locally for now</div>
+        <div class="dl-action dl-action-muted">Soon</div>
+      </div>
       <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage" class="dl-card liquid-glass" data-os="linux">
         <span class="dl-badge">Recommended for you</span>
         <div class="dl-os-icon"><i class="fab fa-linux"></i></div>
@@ -634,13 +633,12 @@
       }
 
       /* ── Make every generic "Download" CTA (navbar, mobile menu, final CTA) actually
-            download the detected OS's installer — same behaviour as the OS cards.
-            Unknown platforms fall back to scrolling to the #download picker. macOS is
-            Apple Silicon only (.dmg). URLs are version-less (releases/latest/download/…)
-            so they auto-track the newest release and never need per-release edits. ── */
+            download the detected OS's installer — same behaviour as the OS cards. mac
+            (no build yet) and unknown platforms fall back to scrolling to the #download
+            picker. URLs are version-less (releases/latest/download/…) so they auto-track
+            the newest release and never need per-release edits. ── */
       var INSTALLER = {
         windows: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe',
-        mac: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.dmg',
         linux: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage'
       };
       var directUrl = detected && INSTALLER[detected];
@@ -650,8 +648,8 @@
         });
       }
 
-      /* Only the detected OS keeps the "Recommended for you" badge (it's hard-coded on
-         the Windows, macOS AND Linux cards — at most one can be "for you"). */
+      /* Only the detected OS keeps the "Recommended for you" badge (it was hard-coded on
+         both the Windows AND Linux cards — at most one can be "for you"). */
       document.querySelectorAll('.dl-badge').forEach(function (b) {
         var c = b.closest('.dl-card');
         if (!detected || !c || c.getAttribute('data-os') !== detected) b.style.display = 'none';
