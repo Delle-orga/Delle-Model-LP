@@ -22,7 +22,7 @@ Lead with **"a GUI for gallery-dl & yt-dlp that organizes your downloads by crea
 > Delle Model — a free, 100% local desktop GUI for gallery-dl & yt-dlp that organizes everything you download into a library, one profile per creator.
 
 **Short (directories)**
-> Delle Model is a free desktop app (Windows/Linux, macOS soon) that downloads with gallery-dl & yt-dlp and then organizes it all into a browsable library — one profile per creator with their videos, images, tags, favorites and notes. It backfills post dates and tags from the sidecar metadata, de-duplicates with exact SHA-256 + perceptual hashing, auto-syncs from a watched folder, and stays 100% local: no cloud, no account, no telemetry.
+> Delle Model is a free desktop app (Windows, macOS, Linux) that downloads with gallery-dl & yt-dlp and then organizes it all into a browsable library — one profile per creator with their videos, images, tags, favorites and notes. It backfills post dates and tags from the sidecar metadata, de-duplicates with exact SHA-256 + perceptual hashing, auto-syncs from a watched folder, and stays 100% local: no cloud, no account, no telemetry.
 
 **Reddit / forum (value-first, disclose you're the dev)**
 > I kept using gallery-dl and yt-dlp to archive creator content, but once the files landed I had no real way to browse them — just folders, no context, and tons of re-downloaded dupes. So I built a desktop app that uses gallery-dl/yt-dlp to download and then turns the result into a library organized by creator: each creator gets one profile with all their videos/images, tags, favorites, notes, and an activity timeline when the media has post dates. It reads the gallery-dl/yt-dlp sidecar JSON to backfill dates and tags onto old downloads, de-dupes with exact + perceptual hashing, and watches folders so new downloads auto-import. It's 100% local — no cloud, no account, no telemetry — and free in closed beta. Full disclosure, I'm the dev. Happy to answer anything and take feedback on what's missing.
@@ -34,7 +34,7 @@ Lead with **"a GUI for gallery-dl & yt-dlp that organizes your downloads by crea
 ### High priority — do first
 | Target | URL | How to submit |
 |---|---|---|
-| **AlternativeTo** | https://alternativeto.net/ | Account → "Suggest new application". Platforms Windows/Linux (macOS soon), License Free, tags: media-organizer, gallery-dl, yt-dlp, downloader, archiving. Then "Suggest Alternatives" on gallery-dl, yt-dlp, Stash, Hydrus, Whisparr, Obscura pages. Keep wording SFW. |
+| **AlternativeTo** | https://alternativeto.net/ | Account → "Suggest new application". Platforms Windows/macOS/Linux, License Free, tags: media-organizer, gallery-dl, yt-dlp, downloader, archiving. Then "Suggest Alternatives" on gallery-dl, yt-dlp, Stash, Hydrus, Whisparr, Obscura pages. Keep wording SFW. |
 | **r/DataHoarder** | https://www.reddit.com/r/DataHoarder/ | Best audience. Build a little karma first, read sidebar. Value-first Show & Tell: lead with the problem, screenshots + a swipe-mode/timeline clip, disclose you're the dev, right flair. |
 | **GitHub Topics** | https://github.com/topics/gallery-dl-gui | On the public repo add topics: gallery-dl-gui, yt-dlp-gui, gallery-dl, yt-dlp, data-hoarder, media-organizer, electron. Free, instant. |
 | **awesome-datahoarding** | https://github.com/simon987/awesome-datahoarding | Fork → add one-line entry under GUI front-ends / local media → PR matching existing format. |
