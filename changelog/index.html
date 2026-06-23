@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#E8E8E9" />
+  <title>Delle Model — Changelog</title>
+  <meta name="description" content="What's new in Delle Model — version by version." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dellemodel.app/changelog/index.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Delle Model — Changelog" />
+  <meta property="og:description" content="What's new in Delle Model — version by version." />
+  <meta property="og:url" content="https://dellemodel.app/changelog/index.html" />
+  <meta property="og:image" content="https://dellemodel.app/assets/main-white.png" />
+  <meta property="og:site_name" content="Delle Model" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Delle Model — Changelog" />
+  <meta name="twitter:description" content="What's new in Delle Model — version by version." />
+  <meta name="twitter:image" content="https://dellemodel.app/assets/main-white.png" />
+  <meta name="twitter:site" content="@dellemodel" />
+
+  <link rel="icon" type="image/x-icon" href="/Delle.ico" />
+  <link rel="icon" type="image/png" sizes="256x256" href="/Delle.png" />
+  <link rel="apple-touch-icon" href="/Delle.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Thème avant le paint pour éviter le flash. Défaut light pour matcher la LP ;
+       la clé 'theme' est partagée avec dellemodel.app donc le choix se propage. -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.classList.toggle('light', t === 'light');
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cl-app">
+    <header class="cl-header">
+      <a class="cl-brand" href="/">
+        <span class="cl-brand-mark">D</span>
+        <span class="cl-brand-text">
+          <span class="cl-brand-name">Delle Model</span>
+          <span class="cl-brand-sub muted">Changelog</span>
+        </span>
+      </a>
+      <button class="cl-theme" id="theme-toggle" aria-label="Toggle light/dark">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+    </header>
+
+    <div class="cl-layout">
+      <!-- Versions : une .cl-panel par version, switch en slide horizontal -->
+      <main class="cl-viewport liquid-glass">
+        <div class="cl-track" id="track"></div>
+        <button class="cl-nav cl-prev" id="prev" aria-label="Newer version"><i class="fas fa-chevron-left"></i></button>
+        <button class="cl-nav cl-next" id="next" aria-label="Older version"><i class="fas fa-chevron-right"></i></button>
+      </main>
+
+      <!-- Sommaire (droite) : aller de version en version -->
+      <aside class="cl-toc liquid-glass">
+        <p class="cl-toc-label">Versions</p>
+        <nav class="cl-toc-nav" id="toc"></nav>
+      </aside>
+    </div>
+  </div>
+
+  <script src="changelog.js"></script>
+  <script>
+    (function () {
+      var data = (window.CHANGELOG || []).slice();
+      var track = document.getElementById('track');
+      var toc = document.getElementById('toc');
+      var prevBtn = document.getElementById('prev');
+      var nextBtn = document.getElementById('next');
+      var index = 0;
+
+      var esc = function (s) { var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; };
+
+      data.forEach(function (v, i) {
+        // Panel
+        var panel = document.createElement('article');
+        panel.className = 'cl-panel';
+        panel.id = 'v' + v.version;
+        var changes = (v.changes || []).map(function (c) {
+          return '<li><i class="fas fa-check"></i><span>' + esc(c) + '</span></li>';
+        }).join('');
+        panel.innerHTML =
+          '<div class="cl-panel-inner">' +
+            (v.tag ? '<span class="cl-tag">' + esc(v.tag) + '</span>' : '') +
+            '<h1 class="cl-version"><span class="gradient-text">v' + esc(v.version) + '</span></h1>' +
+            (v.headline ? '<p class="cl-headline">' + esc(v.headline) + '</p>' : '') +
+            (v.date ? '<p class="cl-date muted">' + esc(v.date) + '</p>' : '') +
+            '<ul class="cl-changes">' + changes + '</ul>' +
+          '</div>';
+        track.appendChild(panel);
+
+        // Sommaire
+        var btn = document.createElement('button');
+        btn.className = 'cl-toc-item';
+        btn.type = 'button';
+        btn.innerHTML =
+          '<span class="cl-toc-dot"></span>' +
+          '<span class="cl-toc-v">v' + esc(v.version) + '</span>' +
+          (v.headline ? '<span class="cl-toc-h">' + esc(v.headline) + '</span>' : '');
+        btn.addEventListener('click', function () { goTo(i); });
+        toc.appendChild(btn);
+      });
+
+      var tocItems = Array.prototype.slice.call(toc.children);
+
+      function goTo(i) {
+        index = Math.max(0, Math.min(data.length - 1, i));
+        track.style.transform = 'translateX(-' + index * 100 + '%)';
+        tocItems.forEach(function (el, j) { el.classList.toggle('is-active', j === index); });
+        if (tocItems[index]) tocItems[index].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        // index 0 = la plus récente → "prev" remonte (newer), "next" descend (older)
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === data.length - 1;
+        var p = track.children[index]; if (p) p.scrollTop = 0;
+        if (data[index]) history.replaceState(null, '', '#v' + data[index].version);
+      }
+
+      prevBtn.addEventListener('click', function () { goTo(index - 1); });
+      nextBtn.addEventListener('click', function () { goTo(index + 1); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { goTo(index - 1); }
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { goTo(index + 1); }
+      });
+
+      // Deep-link #v1.9.13
+      var hv = location.hash.replace('#v', '');
+      var start = data.findIndex(function (v) { return v.version === hv; });
+      goTo(start < 0 ? 0 : start);
+
+      // Thème
+      var btnT = document.getElementById('theme-toggle');
+      var icon = document.getElementById('theme-icon');
+      function syncIcon() {
+        var light = document.documentElement.classList.contains('light');
+        icon.className = light ? 'fas fa-sun' : 'fas fa-moon';
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', light ? '#E8E8E9' : '#141317');
+      }
+      syncIcon();
+      btnT.addEventListener('click', function () {
+        var light = document.documentElement.classList.toggle('light');
+        localStorage.setItem('theme', light ? 'light' : 'dark');
+        syncIcon();
+      });
+    })();
+  </script>
+</body>
+</html>
