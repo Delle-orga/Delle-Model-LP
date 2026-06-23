@@ -16,9 +16,12 @@
       var seg = location.pathname.replace(/^\/+/, '').split('/')[0].toLowerCase();
       var targets = {
         releases: 'https://github.com/Delle-orga/Delle-Model-release/releases',
-        download: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest'
+        download: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest',
+        changelog: '/changelog/index.html'
       };
-      if (targets[seg]) location.replace(targets[seg]);
+      var dest = targets[seg];
+      // Internal targets keep the hash (changelog deep-links like /changelog#v1.9.0).
+      if (dest) location.replace(dest.charAt(0) === '/' ? dest + location.hash : dest);
     })();
     // Match the site's saved light/dark choice so the 404 isn't jarring.
     (function () {
