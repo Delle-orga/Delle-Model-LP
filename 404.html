@@ -10,17 +10,18 @@
     // rewrites, and the site is fronted by Cloudflare which strips trailing
     // slashes (so /releases/ -> /releases) while Pages does no extensionless
     // resolution. Pages serves THIS 404.html for any unknown path, so we route
-    // the known short-links to their GitHub target here; anything else falls
-    // through to the 404 message below.
+    // the known short-links here: /releases and /changelog both open the on-site
+    // changelog page; /download goes to the GitHub release for the installer.
+    // Anything else falls through to the 404 message below.
     (function () {
       var seg = location.pathname.replace(/^\/+/, '').split('/')[0].toLowerCase();
       var targets = {
-        releases: 'https://github.com/Delle-orga/Delle-Model-release/releases',
-        download: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest',
-        changelog: '/changelog/index.html'
+        releases: '/releases/index.html',
+        changelog: '/releases/index.html',
+        download: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest'
       };
       var dest = targets[seg];
-      // Internal targets keep the hash (changelog deep-links like /changelog#v1.9.0).
+      // Internal targets keep the hash (deep-links like /releases#v1.9.0).
       if (dest) location.replace(dest.charAt(0) === '/' ? dest + location.hash : dest);
     })();
     // Match the site's saved light/dark choice so the 404 isn't jarring.
