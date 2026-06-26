@@ -3,6 +3,69 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '1.9.19',
+    tag: 'Playback',
+    headline: 'Play any video, tidier downloads',
+    changes: [
+      'Convert a clip to MP4 from the Doctor — play .ts / .mkv / HEVC videos that wouldn’t open in-app before',
+      'Downloaded videos now land in the right folder instead of a model’s root',
+      'Clearer, friendlier startup',
+      'Faster, smarter drag-and-drop of a link onto a model',
+    ],
+  },
+  {
+    version: '1.9.18',
+    tag: 'Faces & polish',
+    headline: 'Faces, live sync & a lot of polish',
+    changes: [
+      'Faces: searchable, sortable, paginated suggestions and faster review',
+      'The sync progress bar now fills within each model, not just model by model',
+      'Drop a link straight onto the right model',
+      'Group a model’s links by site',
+      'Quieter notifications — one-off confirmations no longer pile up in the list',
+      'Copy a model’s other names; fixed images that didn’t load on some pages',
+    ],
+  },
+  {
+    version: '1.9.17',
+    tag: 'Library',
+    headline: 'Move media between models',
+    changes: [
+      'Move & cherry-pick videos and images between models',
+      'Pick exactly which items a link downloads',
+      'Smoother seeking on large videos',
+      'A “You’re watching” card when you pause a video',
+    ],
+  },
+  {
+    version: '1.9.16',
+    tag: 'Links',
+    headline: 'Drag a link onto a model',
+    changes: [
+      'Drag-and-drop a link onto a model to attach it instantly — the prompt just asks whether to also download it',
+    ],
+  },
+  {
+    version: '1.9.15',
+    tag: 'Fix',
+    headline: 'Doctor fix',
+    changes: [
+      'Cancelling an upscale now actually stops it — no more work left running in the background',
+    ],
+  },
+  {
+    version: '1.9.14',
+    tag: 'Automation',
+    headline: 'Downloads that organize themselves',
+    changes: [
+      'New downloads sync into your library automatically — no file watcher needed',
+      'Adding a link auto-fetches its title, date and tags',
+      '"Check for new" now works on video sites too',
+      'The Doctor shows an estimated time for each job',
+      'Zoom the whole app with Ctrl + scroll',
+    ],
+  },
+  {
     version: '1.9.13',
     tag: 'Interface',
     headline: 'A cleaner library view',
