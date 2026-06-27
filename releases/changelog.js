@@ -3,6 +3,16 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '1.9.20',
+    tag: 'Tools',
+    headline: 'Media tools, one click away',
+    changes: [
+      'Download ffmpeg and the face-recognition models in one click — update or remove them just as easily',
+      'More reliable tool detection across Windows, macOS and Linux, whatever package manager you use',
+      'See tool downloads in the activity center',
+    ],
+  },
+  {
     version: '1.9.19',
     tag: 'Playback',
     headline: 'Play any video, tidier downloads',
