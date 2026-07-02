@@ -3,6 +3,32 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '1.11.0',
+    tag: 'Sync & polish',
+    headline: 'A smarter sync box and tidier library',
+    changes: [
+      'The sync box now shows time remaining and speed, mirrors its progress on the Windows taskbar, and notifies you when it finishes',
+      'Reopen the last sync report anytime — plus clearer Pause and Cancel controls, with Cancel asking to confirm',
+      'Smart collections look like playlists and can be reordered by drag & drop',
+      '“Other videos” follows the list you came from — a playlist or your Browse results — with a toggle back to the model',
+      'Right-click a model for quick actions: sync, favorite, hide, mark done, open its folder, and more',
+      'Move a link to another model, optionally taking its downloaded content with it',
+      'Simpler “Create a site” — paste a URL and its name and icon are filled in for you',
+      'A unified Sort menu in Browse, the full Library menu on mobile, and easier-to-read filter chips',
+    ],
+  },
+  {
+    version: '1.10.0',
+    tag: 'Tools',
+    headline: 'Video upscaling and an Admin home',
+    changes: [
+      'New Video2x tool to upscale and smooth your videos',
+      'A dedicated Admin section to manage tools and settings',
+      'Select-all and clear toggles when choosing media in bulk',
+      'Player and sync refinements',
+    ],
+  },
+  {
     version: '1.9.20',
     tag: 'Tools',
     headline: 'Media tools, one click away',
