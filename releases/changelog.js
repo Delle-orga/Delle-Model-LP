@@ -3,6 +3,73 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '2.0.4',
+    tag: 'Library & safety',
+    headline: 'A richer video wall and a safer recycle bin',
+    changes: [
+      'Video tiles on model pages glow softly with their artwork’s color, and portrait videos sit in tinted bars instead of black',
+      'A thin line on each video tile shows where you left off, and the Videos header totals the model’s watch time',
+      'Reset a model’s watch progress from its “…” menu — with an inline confirm',
+      'Restoring from the recycle bin never overwrites an existing file, and bulk restore/delete reports exactly what succeeded and what failed',
+      'Fixed media that would not load when a model’s name was contained in another model’s name',
+      'When a sync finishes minimized, its pill slips away on its own — the full report stays one click away in the activity center',
+      'The end-of-sync notification names what was synced: a model, a folder, or the whole library',
+      'Smaller fixes: metadata sidecars found despite mismatched extensions, clearer Doctor diagnostics, “Optional” labels when creating a model',
+    ],
+  },
+  {
+    version: '2.0.3',
+    tag: 'Selection & dedup',
+    headline: 'Select across pages, dismiss false duplicates',
+    changes: [
+      'Selections survive page changes — pick media across several pages and act on all of it at once',
+      'Download the content of all of a model’s links in one go',
+      'Mark a similar-video match as “not a duplicate” to dismiss false positives — and groups re-form correctly after deletions',
+      'Video versions redesigned, each row led by the video’s title',
+      'Adding a link now starts from the URL — paste it and the rest fills in',
+      'Fixed a drop overlay that could stay stuck on screen after dragging a link',
+      'Hidden media now stays hidden everywhere, plus sync fixes',
+    ],
+  },
+  {
+    version: '2.0.2',
+    tag: 'Playback',
+    headline: 'Resume where you stopped',
+    changes: [
+      'Videos resume where you left them',
+      'Smoother picture-in-picture — seeking no longer drops the floating window',
+      'Restart really restarts, and a finished video no longer replays by surprise',
+      'The Doctor now tells a silent audio track apart from a missing one',
+      'Home and Hub visual polish',
+    ],
+  },
+  {
+    version: '2.0.1',
+    tag: 'Home & themes',
+    headline: 'A living Home, a Theme Studio and a News inbox',
+    changes: [
+      'Home rebuilt — motion, live data and a Rediscover row',
+      'The Hub menu levels up: activity, universe presets and quick settings in one place',
+      'Theme Studio: curated looks, hover preview, automatic day/night and six new accent colors',
+      'News becomes a chronological inbox — day bundles, catch-up and source health',
+      'Cherry-picked downloads start instantly and report honest totals',
+      'Sync now finds model folders moved to another storage folder and repairs them instead of purging their media',
+    ],
+  },
+  {
+    version: '2.0.0',
+    tag: 'Delle 2.0',
+    headline: 'Universes, phone remote and a per-model recycle bin',
+    changes: [
+      'Universes — split your library into separate spaces and switch in one click',
+      'Move a model between storage folders',
+      'A recycle bin on each model’s page, and a clearer two-step delete',
+      'Control playback from your phone — scan the QR code and take the remote',
+      'An info panel in the picture viewer',
+      'More sites download reliably, and streamed videos land as real MP4s that play in-app',
+    ],
+  },
+  {
     version: '1.11.0',
     tag: 'Sync & polish',
     headline: 'A smarter sync box and tidier library',
