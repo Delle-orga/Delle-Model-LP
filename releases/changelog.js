@@ -3,6 +3,23 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '2.1.0',
+    tag: 'Reliability & insight',
+    headline: 'Dependable downloads, a faster sync and a library dashboard',
+    changes: [
+      'Downloads look after themselves: per-site limits, automatic retries with a cooldown, a watchdog for silent stalls, and honest statuses after a crash or restart',
+      'Each download card tells one clear story — why a job waits, which engine runs it, what file is transferring — with a queue strip and a copyable diagnostic report',
+      'Links can repair themselves: see how many files were deleted or are missing from a link — even after emptying the recycle bin — and re-fetch exactly those',
+      'Synchronization is much faster when little has changed, and the app stays smooth while it runs',
+      'Deep video integrity checks moved to the background, so freshly downloaded videos appear immediately',
+      'An amber badge on the sync buttons tells you when downloads landed new files and a sync is worth it',
+      'Profile opens on a full dashboard: library totals, additions over time, downloads, storage and health at a glance',
+      'Video captures now open in place on the video page with the full right-click menu, and G grabs a frame at any time',
+      'Add a whole selection to a playlist, see a video’s playlists on its page, and vote on hero images to shape their rotation',
+      'Fixed banner and profile crops coming out rotated for photos taken on phones',
+    ],
+  },
+  {
     version: '2.0.4',
     tag: 'Library & safety',
     headline: 'A richer video wall and a safer recycle bin',
