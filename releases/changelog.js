@@ -3,6 +3,31 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '2.2.0',
+    tag: 'Feed & auto-tag',
+    headline: 'A feed for your library, photos that tag themselves, and a new Home',
+    changes: [
+      'New Feed page: what arrived since your last visit comes first, then a mix of your library rebuilt as posts — each one says why it’s there',
+      'The Feed plays videos in place, learns from Less, More, Snooze and Mute, offers other mixes (Random, Fresh, Throwback, Gems, Favorites, Long play…) and can scroll itself hands-free',
+      'Auto-tag: an optional engine, downloaded once and run on your own computer, learns your tags from your examples and suggests them; check its accuracy tag by tag, then let it apply a tag across the library — every run can be undone',
+      'Find photos by describing them in words, and start a new tag from a description',
+      'Home opens on what’s new since your last visit, with Moments from your videos, a photo wall shaped by your thumbs up and down, and favorites you haven’t opened in a while',
+      'Safe Mode (F9) covers the whole screen with a calm animated scene; type “delle” to come back',
+      'Eco mode turns off the heaviest visual effects on this device to save power',
+      'Choose the pages of the navigation bar and drag them in order, with a live preview',
+      'Sound presets in the player: Voice, Night, Bass, Cinema, Crisp, or your own',
+      'Screensaver: play chosen tags as albums or keep Smart random, launched from the Delle logo menu',
+      'A model’s links and their downloads now live together: each link card shows its download, and the details open right under it',
+      'Each photo and video shows where it was posted and when; both can be edited, one at a time or for a whole selection from the new All actions palette',
+      'Duplicates now tell true copies apart from burst shots, and a side-by-side compare shows how two files differ',
+      'Model cards and pages show when a download, move or other task is running on that model — or waiting its turn',
+      'Moving a model to another drive resumes where it stopped after an interruption, moves can be queued, and downloads started meanwhile wait for the move instead of being refused',
+      'Activity history in the hub, a redesigned hub, and quick actions on the Delle logo',
+      'Open web links in the browser of your choice',
+      'Fixed backups and exports failing on very large libraries',
+    ],
+  },
+  {
     version: '2.1.0',
     tag: 'Reliability & insight',
     headline: 'Dependable downloads, a faster sync and a library dashboard',
