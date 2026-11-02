@@ -3,6 +3,19 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '2.3.0',
+    tag: 'Remote library',
+    headline: 'Open another computer’s library in the app itself',
+    changes: [
+      'Point the app at another computer running Delle and it shows that library instead of its own — its models, its drives, its downloads — in the app rather than a browser tab',
+      'Computers on your Tailscale network are listed by name, with the ones running Delle marked, so you can keep using your library from a laptop while it stays at home — or type an address yourself',
+      'One click in the tray menu brings you back to this computer, even when the other one is off',
+      'If the other computer sleeps or the connection drops, the app waits and reconnects on its own',
+      'While you are viewing another computer, the actions that only make sense on this one — picking a folder, revealing a file on disk — step aside',
+      'Fixed other devices being unable to reach a Delle running on a port other than the usual one',
+    ],
+  },
+  {
     version: '2.2.0',
     tag: 'Feed & auto-tag',
     headline: 'A feed for your library, photos that tag themselves, and a new Home',
