@@ -3,6 +3,15 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '2.3.1',
+    tag: 'Fix',
+    headline: '2.3.0 starts again',
+    changes: [
+      'Fixed the app showing a “Cannot find module” error at launch after installing 2.3.0',
+      '2.3.0 cannot update itself — if you installed it, download 2.3.1 and install it over it; your library and settings are kept',
+    ],
+  },
+  {
     version: '2.3.0',
     tag: 'Remote library',
     headline: 'Open another computer’s library in the app itself',
