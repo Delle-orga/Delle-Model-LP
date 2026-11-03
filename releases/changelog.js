@@ -3,6 +3,21 @@
       en premier). `date` est optionnel (omis = pas affiché). `tag` = petit libellé. */
 window.CHANGELOG = [
   {
+    version: '2.3.2',
+    tag: 'Spotlight',
+    headline: 'Pin a model to Home, and a spotlight that stops repeating itself',
+    changes: [
+      'Pin any model to the Home spotlight from the new Spotlight button — it stays until you unpin it, then your usual rotation comes back exactly as it was',
+      'Another pick now shows every model once before any comes back — with Favorites only it kept returning to the same few',
+      'Favorites only now draws from all your favorites, not just the first 14',
+      'The Home spotlight is taller on large screens, and model banners show the whole picture you framed',
+      'Only Feed and Spotlight remain at the top of the spotlight; Swipe and Browse are in the navigation bar',
+      'Fixed the spotlight showing a hidden model, or a model from another universe',
+      'Fixed reloading a model or video page in a phone browser showing raw data instead of the page',
+      'Stronger sign-in security: every device asks you to sign in once after this update',
+    ],
+  },
+  {
     version: '2.3.1',
     tag: 'Fix',
     headline: '2.3.0 starts again',
