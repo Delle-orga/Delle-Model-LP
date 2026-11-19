@@ -51,7 +51,6 @@
     "applicationSubCategory": "DesktopApplication",
     "description": "Delle Model is a 100% local desktop app that turns everything you've downloaded — with gallery-dl, yt-dlp or by hand — into a private library, organized by creator and ready to browse and watch. No cloud, no account.",
     "url": "https://dellemodel.app/",
-    "downloadUrl": "https://github.com/Delle-orga/Delle-Model-release/releases/latest",
     "image": "https://dellemodel.app/assets/main-white.png",
     "screenshot": "https://dellemodel.app/assets/main-white.png",
     "publisher": {
@@ -87,14 +86,14 @@
       <div class="navbar-links">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
-        <a href="#download">Download</a>
+        <a href="#access">Access</a>
         <a href="/faq.html">FAQ</a>
       </div>
       <div class="navbar-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
           <i class="fas fa-sun" id="theme-icon"></i>
         </button>
-        <a href="#download" class="btn-glass btn-primary"><i class="fas fa-download"></i> Download</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary"><i class="fab fa-discord"></i> Request access</a>
       </div>
       <button class="navbar-mobile-btn" id="mobile-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
     </div>
@@ -107,7 +106,7 @@
       <a href="#features"><i class="fas fa-bolt"></i> Features</a>
       <a href="#how-it-works"><i class="fas fa-list-ol"></i> How it works</a>
       <a href="/faq.html"><i class="fas fa-circle-question"></i> FAQ</a>
-      <a href="#download" class="mobile-menu-cta"><i class="fas fa-download"></i> Download</a>
+      <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="mobile-menu-cta"><i class="fab fa-discord"></i> Request access</a>
     </div>
   </div>
 
@@ -132,11 +131,8 @@
         </p>
 
         <div class="hero-buttons">
-          <a href="#download" class="btn-glass btn-primary btn-lg">
-            <i class="fas fa-download"></i> Download free
-          </a>
-          <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-discord btn-lg">
-            <i class="fab fa-discord"></i> Get a free beta key
+          <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg">
+            <i class="fab fa-discord"></i> Request access
           </a>
         </div>
         <a href="#how-it-works" class="hero-text-link"><i class="fas fa-play"></i> See how it works</a>
@@ -347,48 +343,18 @@
     </div>
   </section>
 
-  <!-- ── Download / installer ──
-       Download URLs use GitHub's /releases/latest/download/<filename> pattern,
-       which redirects automatically to the newest release's matching asset.
-       Filenames are kept version-less by electron-builder's artifactName
-       template (see Delle-Model electron/package.json) — so these URLs never
-       need to change per release. -->
-  <section id="download" class="section download-section">
-    <h2 class="section-title fade-up">Available on every <span class="gradient-text">desktop</span></h2>
-    <p class="section-subtitle fade-up delay-1">Windows, macOS, Linux. Free during the closed beta.</p>
+  <!-- ── Access ── closed beta: one way in, on Discord. -->
+  <section id="access" class="section download-section">
+    <h2 class="section-title fade-up">Invite-only, <span class="gradient-text">for now</span></h2>
+    <p class="section-subtitle fade-up delay-1">Windows, macOS and Linux. Access is handled on Discord.</p>
 
     <div class="beta-callout liquid-glass fade-up delay-1">
       <div class="beta-callout-icon"><i class="fab fa-discord"></i></div>
       <div class="beta-callout-text">
-        <h3>Grab your free beta key first</h3>
-        <p>Delle Model is invite-only for now. Join the Discord to get a free beta key in a minute — it's also where new builds, support, and what's next are posted. <strong>Highly recommended.</strong></p>
+        <h3>Ask for access</h3>
+        <p>Delle Model is in closed beta. Come by the Discord and ask — support and what's next live there too.</p>
       </div>
-      <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg beta-callout-cta"><i class="fab fa-discord"></i> Get a free beta key</a>
-    </div>
-
-    <div class="download-grid fade-up delay-2">
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe" class="dl-card liquid-glass" data-os="windows">
-        <span class="dl-badge">Recommended for you</span>
-        <div class="dl-os-icon"><i class="fab fa-windows"></i></div>
-        <div class="dl-os">Windows</div>
-        <div class="dl-format">10 / 11 · .exe installer</div>
-        <div class="dl-action"><i class="fas fa-download"></i> Download</div>
-      </a>
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.dmg" class="dl-card liquid-glass" data-os="mac">
-        <span class="dl-badge">Recommended for you</span>
-        <div class="dl-os-icon"><i class="fab fa-apple"></i></div>
-        <div class="dl-os">macOS</div>
-        <div class="dl-format">.dmg · Apple Silicon</div>
-        <div class="dl-action"><i class="fas fa-download"></i> Download</div>
-        <div class="dl-note"><i class="fas fa-circle-info"></i> First launch: right-click → Open</div>
-      </a>
-      <a href="https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage" class="dl-card liquid-glass" data-os="linux">
-        <span class="dl-badge">Recommended for you</span>
-        <div class="dl-os-icon"><i class="fab fa-linux"></i></div>
-        <div class="dl-os">Linux</div>
-        <div class="dl-format">.AppImage · x86_64</div>
-        <div class="dl-action"><i class="fas fa-download"></i> Download</div>
-      </a>
+      <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg beta-callout-cta"><i class="fab fa-discord"></i> Request access</a>
     </div>
   </section>
 
@@ -397,10 +363,9 @@
     <div class="support-content liquid-glass fade-up">
       <div class="support-glow"></div>
       <h2>Get your archive <span class="gradient-text">in order</span>.</h2>
-      <p>Free closed beta. Join the Discord to grab your beta key — that's also where support, bug reports, and what's coming next all live.</p>
+      <p>Closed beta. Access, support and what's coming next all happen on Discord.</p>
       <div class="support-buttons">
-        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg"><i class="fab fa-discord"></i> Join Discord &amp; get a key</a>
-        <a href="#download" class="btn-glass btn-lg btn-ghost"><i class="fas fa-download"></i> Download</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg"><i class="fab fa-discord"></i> Request access</a>
         <a href="/faq.html" class="btn-glass btn-lg btn-ghost"><i class="fas fa-circle-question"></i> Read FAQ</a>
       </div>
     </div>
@@ -622,41 +587,6 @@
         chartReady = true;
         renderYear(currentYear);
       }
-
-      /* ── Highlight the visitor's OS on the download cards ── */
-      var plat = (navigator.userAgentData && navigator.userAgentData.platform || navigator.platform || navigator.userAgent || '').toLowerCase();
-      var detected = null;
-      if (plat.indexOf('win') !== -1) detected = 'windows';
-      else if (plat.indexOf('mac') !== -1 || plat.indexOf('iphone') !== -1 || plat.indexOf('ipad') !== -1) detected = 'mac';
-      else if (plat.indexOf('linux') !== -1 || plat.indexOf('android') !== -1) detected = 'linux';
-      if (detected) {
-        var card = document.querySelector('.dl-card[data-os="' + detected + '"]');
-        if (card) card.classList.add('dl-card-detected');
-      }
-
-      /* ── Make every generic "Download" CTA (navbar, mobile menu, final CTA) actually
-            download the detected OS's installer — same behaviour as the OS cards. Unknown
-            platforms fall back to scrolling to the #download picker. URLs are version-less
-            (releases/latest/download/…) so they auto-track the newest release and never
-            need per-release edits. ── */
-      var INSTALLER = {
-        windows: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe',
-        mac: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.dmg',
-        linux: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage'
-      };
-      var directUrl = detected && INSTALLER[detected];
-      if (directUrl) {
-        document.querySelectorAll('a[href="#download"]').forEach(function (a) {
-          a.setAttribute('href', directUrl);
-        });
-      }
-
-      /* Only the detected OS keeps the "Recommended for you" badge (it was hard-coded on
-         both the Windows AND Linux cards — at most one can be "for you"). */
-      document.querySelectorAll('.dl-badge').forEach(function (b) {
-        var c = b.closest('.dl-card');
-        if (!detected || !c || c.getAttribute('data-os') !== detected) b.style.display = 'none';
-      });
 
       /* ── Lightbox: click any .zoomable image to view it large + zoom/pan ── */
       var lb = document.getElementById('lightbox');

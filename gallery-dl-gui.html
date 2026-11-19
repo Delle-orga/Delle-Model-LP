@@ -71,14 +71,14 @@
       <div class="navbar-links">
         <a href="/#features">Features</a>
         <a href="/#how-it-works">How it works</a>
-        <a href="/#download">Download</a>
+        <a href="/#access">Access</a>
         <a href="/faq.html">FAQ</a>
       </div>
       <div class="navbar-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
           <i class="fas fa-sun" id="theme-icon"></i>
         </button>
-        <a href="/#download" class="btn-glass btn-primary"><i class="fas fa-download"></i> Download</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary"><i class="fab fa-discord"></i> Request access</a>
       </div>
       <button class="navbar-mobile-btn" id="mobile-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
     </div>
@@ -91,7 +91,7 @@
       <a href="/#features"><i class="fas fa-bolt"></i> Features</a>
       <a href="/#how-it-works"><i class="fas fa-list-ol"></i> How it works</a>
       <a href="/faq.html"><i class="fas fa-circle-question"></i> FAQ</a>
-      <a href="/#download" class="mobile-menu-cta"><i class="fas fa-download"></i> Download</a>
+      <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="mobile-menu-cta"><i class="fab fa-discord"></i> Request access</a>
     </div>
   </div>
 
@@ -116,8 +116,7 @@
           100% local. No account.
         </p>
         <div class="hero-buttons">
-          <a href="/#download" class="btn-glass btn-primary btn-lg"><i class="fas fa-download"></i> Download free</a>
-          <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-discord btn-lg"><i class="fab fa-discord"></i> Get a free beta key</a>
+          <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg"><i class="fab fa-discord"></i> Request access</a>
         </div>
         <p class="hero-meta">
           <i class="fab fa-windows"></i> Windows ·
@@ -203,14 +202,13 @@
   </section>
 
   <!-- ── CTA ── -->
-  <section id="download" class="support-section">
+  <section id="access" class="support-section">
     <div class="support-content liquid-glass fade-up">
       <div class="support-glow"></div>
       <h2>Give gallery-dl a <span class="gradient-text">home</span>.</h2>
-      <p>Free closed beta for Windows, macOS &amp; Linux. Download the app, or grab a free beta key on Discord.</p>
+      <p>Closed beta for Windows, macOS &amp; Linux. Access is handled on Discord.</p>
       <div class="support-buttons">
-        <a href="/#download" class="btn-glass btn-primary btn-lg"><i class="fas fa-download"></i> Download free</a>
-        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-lg btn-discord"><i class="fab fa-discord"></i> Get a beta key</a>
+        <a href="https://discord.gg/hW97Y5TFFT" target="_blank" rel="noreferrer noopener" class="btn-glass btn-primary btn-lg"><i class="fab fa-discord"></i> Request access</a>
         <a href="/faq.html" class="btn-glass btn-lg btn-ghost"><i class="fas fa-circle-question"></i> Read FAQ</a>
       </div>
     </div>
@@ -253,22 +251,6 @@
       var navbar = document.getElementById('navbar');
       var onScroll = function () { navbar.classList.toggle('navbar-scrolled', window.scrollY > 16); };
       window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-      // Direct-download CTAs: this is the #1 SEO page, so its Download buttons should
-      // download the visitor's OS installer in one click instead of bouncing to the
-      // index picker. Detect the OS and rewrite every "/#download" button to that
-      // installer (version-less releases/latest URLs auto-track the newest build).
-      // mac (no build yet) and unknown platforms keep the /#download picker fallback.
-      var plat = (navigator.userAgentData && navigator.userAgentData.platform || navigator.platform || navigator.userAgent || '').toLowerCase();
-      var os = plat.indexOf('win') !== -1 ? 'windows'
-             : (plat.indexOf('mac') !== -1 || plat.indexOf('iphone') !== -1 || plat.indexOf('ipad') !== -1) ? 'mac'
-             : (plat.indexOf('linux') !== -1 || plat.indexOf('android') !== -1) ? 'linux' : null;
-      var INSTALLER = {
-        windows: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model-Setup.exe',
-        linux: 'https://github.com/Delle-orga/Delle-Model-release/releases/latest/download/delle-model.AppImage'
-      };
-      var dl = os && INSTALLER[os];
-      if (dl) { document.querySelectorAll('a[href="/#download"]').forEach(function (a) { a.setAttribute('href', dl); }); }
 
       // Theme toggle
       function applyTheme(isLight) {
